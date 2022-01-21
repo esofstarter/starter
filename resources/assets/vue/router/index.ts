@@ -39,7 +39,6 @@ const router = new VueRouter({
   },
   routes: [
     frontRouteConfig,
-    userDashboardRouteConfig,
     {
       path: '/',
       component: BaseAuth,

@@ -6,8 +6,7 @@ import Root from '../features/Store/Root';
 Vue.use(Vuex);
 
 const modules = {
-  Root,
-  Booking
+  Root
 };
 
 const store = new Vuex.Store({

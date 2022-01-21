@@ -26,8 +26,6 @@ class User extends Authenticatable implements JWTSubject, HasMedia
 
     protected $with = [
         'country',
-        'shipping_details',
-        'billing_details',
         'media'
     ];
 

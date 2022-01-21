@@ -21,7 +21,7 @@ class UserBLL implements UserBLLInterface
 
     public function __construct(
         UserDALInterface $userDAL,
-        MediaDALInterface $mediaDAL,
+        MediaDALInterface $mediaDAL
     ){
         $this->userDAL = $userDAL;
         $this->mediaDAL = $mediaDAL;
