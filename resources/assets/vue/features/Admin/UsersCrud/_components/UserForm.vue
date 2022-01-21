@@ -77,7 +77,6 @@
 
         mounted() {
             this.fetchRoles();
-            this.fetchCountries();
             if (this.edit) {
               this.initFormFromItem();
             }
@@ -110,17 +109,6 @@
             this.axios.get('user/roles/get')
                 .then((response) => {
                     this.roles = response.data;
-                });
-        }
-
-        async fetchCountries() {
-            return this.axios.get('guest/common/get-countries')
-                .then((response) => {
-                    for (let key in response.data){
-                        if(response.data.hasOwnProperty(key)){
-                            this.countries.push({id: key, name: `${response.data[key]['full_name']}`});
-                        }
-                    }
                 });
         }
 
@@ -175,18 +163,6 @@
               </div>
             </div>
 
-            <div class="form-row">
-              <div class="col-md-3 col-sm-6">
-                <form-dropdown :label="'users.country.label'" :id="'country_id'" v-model="form.country_id" :options="countries" :form="form"></form-dropdown>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <form-input :id="'company'" :label="'users.company'" v-model="form.company" :form="form"></form-input>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <form-input :id="'phone'" :label="'users.phone.label'" v-model="form.phone" :form="form"></form-input>
-              </div>
-            </div>
-
             <hr>
 
             <div class="form-row">
@@ -206,49 +182,6 @@
 
           </template>
 
-        </admin-section>
-
-        <!--TODO sections below should be disabled but visible if the user role does not currently have them (Enable on switch role)-->
-        <admin-section :loading="loading">
-          <h4 slot="header">{{$t('users.shipping_address')}}</h4>
-          <div class="form-row" slot="content">
-            <div class="col-md-6">
-              <form-input :isInline="true" :label="'pages.user_dashboard.labels.name'" :id="'shipping_details.name'" v-model="form.shipping_details.name" :form="form" :disabled="form.roles!=3"></form-input>
-            </div>
-            <div class="col-md-6">
-              <form-input :isInline="true" :label="'pages.user_dashboard.labels.address'" :id="'shipping_details.address'" v-model="form.shipping_details.address" :form="form" :disabled="form.roles!=3"></form-input>
-            </div>
-            <div class="col-md-6">
-              <form-input :isInline="true" :label="'pages.user_dashboard.labels.city'" :id="'shipping_details.city'" v-model="form.shipping_details.city" :form="form" :disabled="form.roles!=3"></form-input>
-            </div>
-            <div class="col-md-6">
-              <form-dropdown :isInline="true" :label="'pages.user_dashboard.labels.country'" :id="'shipping_details.country_id'" v-model="form.shipping_details.country_id" :options="countries" :form="form" :disabled="form.roles!=3"></form-dropdown>
-            </div>
-            <div class="col-md-6">
-              <form-input :isInline="true" :label="'pages.user_dashboard.labels.phone_number'" :id="'shipping_details.phone'" v-model="form.shipping_details.phone" :form="form" :disabled="form.roles!=3"></form-input>
-            </div>
-          </div>
-        </admin-section>
-
-        <admin-section :loading="loading">
-          <h4 slot="header">{{$t('users.billing_address')}}</h4>
-          <div class="form-row" slot="content">
-            <div class="col-md-6">
-              <form-input :isInline="true" :label="'pages.user_dashboard.labels.name'" :id="'billing_details.name'" v-model="form.billing_details.name" :form="form" :disabled="form.roles!=3"></form-input>
-            </div>
-            <div class="col-md-6">
-              <form-input :isInline="true" :label="'pages.user_dashboard.labels.address'" :id="'billing_details.address'" v-model="form.billing_details.address" :form="form" :disabled="form.roles!=3"></form-input>
-            </div>
-            <div class="col-md-6">
-              <form-input :isInline="true" :label="'pages.user_dashboard.labels.city'" :id="'billing_details.city'" v-model="form.billing_details.city" :form="form" :disabled="form.roles!=3"></form-input>
-            </div>
-            <div class="col-md-6">
-              <form-dropdown :isInline="true" :label="'pages.user_dashboard.labels.country'" :id="'billing_details.country_id'" v-model="form.billing_details.country_id" :options="countries" :form="form" :disabled="form.roles!=3"></form-dropdown>
-            </div>
-            <div class="col-md-6">
-              <form-input :isInline="true" :label="'pages.user_dashboard.labels.phone_number'" :id="'billing_details.phone'" v-model="form.billing_details.phone" :form="form" :disabled="form.roles!=3"></form-input>
-            </div>
-          </div>
         </admin-section>
 
       </div>
