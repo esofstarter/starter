@@ -6,24 +6,8 @@ const Dashboard = () => import(/* webpackChunkName: "AdminDashboard" */ '../view
 const Users = () => import(/* webpackChunkName: "Users" */ '../views/admin/Users/Users.vue');
 const PublicUsers = () => import(/* webpackChunkName: "PublicUsers" */ '../views/admin/Users/PublicUsers.vue');
 const MyProfile = () => import(/* webpackChunkName: "MyProfile" */ '../views/admin/Users/MyProfile.vue');
-// const AddUser = () => import(/* webpackChunkName: "AddUser" */ '../views/admin/Users/AddUser.vue');
-// const EditUser = () => import(/* webpackChunkName: "EditUser" */ '../views/admin/Users/EditUser.vue');
 const UserForm = () => import(/* webpackChunkName: "EditUser" */ '../features/Admin/UsersCrud/_components/UserForm.vue');
-// const EditProduct = () => import(/* webpackChunkName: "EditProduct" */ '../views/admin/Products/EditProduct.vue');
-// const AddProduct = () => import(/* webpackChunkName: "AddProduct" */ '../views/admin/Products/AddProduct.vue');
 const EditUserAdditionalData = () => import(/* webpackChunkName: "EditUserAdditionalData" */ '../views/admin/Users/EditUserAdditionalData.vue');
-const Combination = () => import(/* webpackChunkName: "CombinationsCRUD" */ '../views/admin/Taxonomies/Combination.vue');
-const Parameter = () =>  import(/* webpackChunkName: "ParametersCRUD" */ '../views/admin/Taxonomies/Parameter.vue');
-const Format = () =>  import(/* webpackChunkName: "FormatsCRUD" */ '../views/admin/Taxonomies/Format.vue');
-const Cliche = () =>  import(/* webpackChunkName: "ClichesCRUD" */ '../views/admin/Taxonomies/Cliche.vue');
-const Color = () =>  import(/* webpackChunkName: "ColorsCRUD" */ '../views/admin/Taxonomies/Color.vue');
-const Handle = () =>  import(/* webpackChunkName: "HandlesCRUD" */ '../views/admin/Taxonomies/Handle.vue');
-const Lamination = () =>  import(/* webpackChunkName: "LaminationsCRUD" */ '../views/admin/Taxonomies/Lamination.vue');
-const Paper = () =>  import(/* webpackChunkName: "PapersCRUD" */ '../views/admin/Taxonomies/Paper.vue');
-const PackageWeight = () =>  import(/* webpackChunkName: "PackageWeightsCRUD" */ '../views/admin/Taxonomies/PackageWeight.vue');
-const HomepageSlider = () =>  import(/* webpackChunkName: "HomepageSlider" */ '../views/admin/Sliders/HomepageSlider.vue');
-const AddSlide = () =>  import(/* webpackChunkName: "AddSlide" */ '../views/admin/Sliders/AddSlide.vue');
-const EditSlide = () =>  import(/* webpackChunkName: "EditSlide" */ '../views/admin/Sliders/EditSlide.vue');
 
 /*INSERT NEW IMPORTS HERE*/
 
