@@ -75,7 +75,7 @@ const user: UserFormItem = {
   roles: [],
   roles_array: [],
   is_disabled: 0,
-  country_id: '',
+  country_id: 0,
   uploaded_file: createFile('image/jpg'),
   json_data: '',
   company: '',

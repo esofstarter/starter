@@ -6,6 +6,7 @@
   /*Partials*/
   import BrandComponent from '@/features/Admin/_partials/Brand.vue';
   import FirstLevelMenuItem from '@/features/Admin/_partials/FirstLevelMenuItem.vue';
+  import AdminSidebarState from '@/typings/Admin/sidebar.d.ts'
 
   const { Action } = namespace('Root');
   const { State } = namespace('Root');
@@ -74,7 +75,6 @@
       if (string === 'minimizingOff') {
         this.sidebarState.minimizing = false;
       }
-
       return this.sidebarState;
 
     }

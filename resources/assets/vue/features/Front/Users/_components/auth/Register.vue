@@ -2,6 +2,7 @@
     import { Component, Emit, Vue, Prop } from 'vue-property-decorator';
     import { namespace } from 'vuex-class';
     import Form from '../../../../../../../../node_modules/form-backend-validation';
+    import MyProfileFormItem from '@/typings/User/myprofileformitem.d.ts'
 
     const { Action } = namespace('Root');
     const { State } = namespace('Root');
