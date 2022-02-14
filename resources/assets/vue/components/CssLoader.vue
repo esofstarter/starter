@@ -1,8 +1,6 @@
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator';
 
-  import DatepickerConst from "@/config/constants/Datepicker";
-
   export default class CssLoader extends Vue {
 
     isChrome : boolean;
