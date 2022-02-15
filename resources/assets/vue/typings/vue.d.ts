@@ -1,20 +1,17 @@
 import { AxiosInstance } from 'axios';
 import VueRouter from 'vue-router';
-import * as VueGoogleMaps from 'vue2-google-maps';
 
 declare module "vue/types/vue" {
   interface Vue {
     $auth: any;
     router: VueRouter;
     axios: AxiosInstance;
-    VueGoogleMaps: VueGoogleMaps;
   }
 
   interface VueConstructor<V extends Vue = Vue> {
     $auth: any;
     router: VueRouter;
     axios: AxiosInstance;
-    VueGoogleMaps: VueGoogleMaps;
   }
 
   interface ComponentOptions<V extends Vue> {
