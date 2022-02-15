@@ -10,7 +10,6 @@
     import FormInputRadio from "@/features/Admin/_partials/FormInputRadio.vue";
     import FileUpload from "@/features/Admin/_partials/FileUpload.vue";
     import FormDropdown from "@/features/Admin/_partials/FormDropdown.vue";
-    import FormBootstrapDropdown from "@/features/Admin/_partials/FormBootstrapDropdown.vue";
     import {FormMixin} from "@/mixins/FormMixin";
     import EventBus from '@/utils/event-bus';
     import AdminSection from '@/components/AdminSection/AdminSection';
@@ -24,7 +23,6 @@
             FormInputRadio,
             FileUpload,
             FormDropdown,
-            FormBootstrapDropdown,
             AdminSection
         }
     })
@@ -209,7 +207,7 @@
       <h3>{{ $t('users.edit_user') }}</h3>
     </div>
 
-    <div v-else="" class="col-12">
+    <div v-else class="col-12">
       <h4>{{ $t('users.add') }}</h4>
     </div>
 
@@ -279,7 +277,6 @@
             <!--      Next three form fields were not originaly used heare. They are only here as an example-->
             <file-upload :label="'example_label'" :id="'file_for_upload'" v-model="file" :form="form"></file-upload>
             <form-dropdown :label="'example_label'" :id="'example_dropdown'" v-model="example_dropdown" :options="[{'id': 0, 'name':'Test Val 0'},{'id': 1, 'name':'Test Val 1'},{'id': 2, 'name':'Test Val 2'},{'id': 3, 'name':'Test Val 3'},{'id': 4, 'name':'Test Val 4'},{'id': 5, 'name':'Test Val 5'},{'id': 6, 'name':'Test Val 6'}]" :form="form"></form-dropdown>
-            <form-bootstrap-dropdown :label="'example_label'" :id="'example_dropdown'" v-model="example_dropdown" :options="[{'id': 0, 'name':'Test Val 0'},{'id': 1, 'name':'Test Val 1'},{'id': 2, 'name':'Test Val 2'},{'id': 3, 'name':'Test Val 3'},{'id': 4, 'name':'Test Val 4'},{'id': 5, 'name':'Test Val 5'},{'id': 6, 'name':'Test Val 6'}]" :form="form"></form-bootstrap-dropdown>
 
             <div class="btn-wrapper">
               <!--            Example usage of form mixin functions-->

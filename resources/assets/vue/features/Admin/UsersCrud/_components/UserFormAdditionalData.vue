@@ -10,7 +10,6 @@
     import FormInputRadio from "@/features/Admin/_partials/FormInputRadio.vue";
     import FileUpload from "@/features/Admin/_partials/FileUpload.vue";
     import FormDropdown from "@/features/Admin/_partials/FormDropdown.vue";
-    import FormBootstrapDropdown from "@/features/Admin/_partials/FormBootstrapDropdown.vue";
     import {FormMixin} from "@/mixins/FormMixin";
 
     const { State } = namespace('Root');
@@ -22,7 +21,6 @@
             FormInputRadio,
             FileUpload,
             FormDropdown,
-            FormBootstrapDropdown
         }
     })
     export default class UserFormAdditionalData extends Mixins(FormMixin) {
@@ -196,7 +194,7 @@
   <div v-if="edit" class="form-title">
       <h3>{{ $t('users.edit_user') }}</h3>
   </div>
-  <div v-else="" class="form-title">
+  <div v-else class="form-title">
       <h4>{{ $t('users.add') }}</h4>
   </div>
 
@@ -234,8 +232,6 @@
 <!--      Next three form fields were not originaly used heare. They are only here as an example-->
       <file-upload :label="'users.'" :id="'file_for_upload'" v-model="file" :form="form"></file-upload>
       <form-dropdown :label="'users.'" :id="'example_dropdown'" v-model="example_dropdown" :options="[{'id': 0, 'name':'Test Val 0'},{'id': 1, 'name':'Test Val 1'},{'id': 2, 'name':'Test Val 2'},{'id': 3, 'name':'Test Val 3'},{'id': 4, 'name':'Test Val 4'},{'id': 5, 'name':'Test Val 5'},{'id': 6, 'name':'Test Val 6'}]" :form="form"></form-dropdown>
-      <form-bootstrap-dropdown :label="'users.'" :id="'example_dropdown'" v-model="example_dropdown" :options="[{'id': 0, 'name':'Test Val 0'},{'id': 1, 'name':'Test Val 1'},{'id': 2, 'name':'Test Val 2'},{'id': 3, 'name':'Test Val 3'},{'id': 4, 'name':'Test Val 4'},{'id': 5, 'name':'Test Val 5'},{'id': 6, 'name':'Test Val 6'}]" :form="form"></form-bootstrap-dropdown>
-
       <div class="btn-wrapper">
         <router-link
                 :loading="loading"

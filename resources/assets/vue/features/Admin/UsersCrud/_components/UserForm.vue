@@ -5,12 +5,11 @@
     import { namespace } from 'vuex-class';
     import { cloneDeep } from 'lodash';
     import 'bootstrap';
-    import FormInput from "@/features/Admin/_partials/FormInput.vue";
+    import FormInput from "../../_partials/FormInput.vue";
     import FormInputCheckbox from "@/features/Admin/_partials/FormInputCheckbox.vue";
     import FormInputRadio from "@/features/Admin/_partials/FormInputRadio.vue";
     import FileUpload from "@/features/Admin/_partials/FileUpload.vue";
     import FormDropdown from "@/features/Admin/_partials/FormDropdown.vue";
-    import FormBootstrapDropdown from "@/features/Admin/_partials/FormBootstrapDropdown.vue";
     import {FormMixin} from "@/mixins/FormMixin";
     import EventBus from '@/utils/event-bus';
     import AdminSection from '@/components/AdminSection/AdminSection';
@@ -30,7 +29,6 @@
             FormInputRadio,
             FileUpload,
             FormDropdown,
-            FormBootstrapDropdown,
             AdminSection,
             UnsavedChangesModal
         }
@@ -80,9 +78,9 @@
             if (this.edit) {
               this.initFormFromItem();
             }
-            else{
-                this.loading = false;
-            }
+            // else{
+            //     this.loading = false;
+            // }
             this.setActiveClasses({
               main: '/users',
               sub: this.$router.currentRoute.name,
@@ -109,6 +107,7 @@
             this.axios.get('user/roles/get')
                 .then((response) => {
                     this.roles = response.data;
+                    this.loading = false;
                 });
         }
 
