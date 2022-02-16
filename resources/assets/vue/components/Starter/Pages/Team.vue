@@ -35,9 +35,6 @@ export default class Team extends Vue {
           <img src="images/Starter/PixelArts/Goran.svg"/>
           <h6 class="team__box__position">Front End Dev</h6>
         </div>
-<!--        <div class="logo__box">-->
-<!--            <img src="images/Starter/LogoSHTATABlack.png"/>-->
-<!--        </div>-->
         <div class="team__box">
           <h5 class="team__box__name">Jovan Dimovski</h5>
           <img src="images/Starter/PixelArts/Jovan.png"/>

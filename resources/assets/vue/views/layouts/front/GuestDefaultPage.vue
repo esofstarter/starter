@@ -10,11 +10,7 @@ import * as VueScrollTo from "vue-scrollto";
 
 //Starter Components
 import Header from "@/components/Starter/StarterHeader/Header.vue";
-import StarterFooter from "@/components/Starter/StarterFooter/StarterFooter.vue";
 import Countdown from '@/views/front/Countdown.vue';
-import Team from "@/components/Starter/Pages/Team.vue";
-import MainHeader from "@/components/Starter/Pages/MainHeader.vue";
-
 const {State} = namespace("Root");
 
 Vue.use(VueScrollTo, {
@@ -35,7 +31,6 @@ Vue.use(VueScrollTo, {
   components: {
     VueHeadful,
     Header,
-    StarterFooter,
     Countdown,
   },
 })
@@ -97,7 +92,6 @@ export default class GuestDefaultPage extends Vue {
   <div class="guest-default-template">
     <Header/>
     <router-view></router-view>
-<!--    <StarterFooter/>-->
   </div>
 </template>
 

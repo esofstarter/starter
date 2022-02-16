@@ -23,7 +23,6 @@ export default class Header extends Vue {
       <div class="starter__header__right">
         <router-link class="header__link nes-btn" to="/about">About</router-link>
         <router-link class="header__link nes-btn" to="/tech">Tech</router-link>
-<!--        <router-link class="header__link nes-btn" to="/work">Work</router-link>-->
         <router-link class="header__link nes-btn" to="/value">Value</router-link>
       </div>
     </div>
