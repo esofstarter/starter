@@ -116,45 +116,4 @@
 
   </div>
   <!-- end:: Aside -->
-
-<!--<nav class='sidebar-nav'>
-    <ul class='main-manu'>
-        <li v-for='item in homeItems'
-            :class='activeClasses.main === item.name ? "active list-item" : "list-item"'
-            v-if="$auth.user().permissions_array !== undefined && $auth.user().permissions_array.includes(item.permission)" >
-            <div v-if='item.subcategories'
-                 class="has_submenu">
-                <div @click='toggleMenu(item.name)'
-                     :toggles='item.name'
-                     :class="activeClasses.main === item.name ? 'menu-heading up-arrow' : 'menu-heading down-arrow'">
-                    {{$t(item.label)}}</div>
-                <ul class='submenu' :id='item.name'>
-                    <li v-for='subitem in item.subcategories'
-                    v-if="$auth.user().permissions_array !== undefined && $auth.user().permissions_array.includes(subitem.permission)"
-                    :class="activeClasses.sub === subitem.link ? 'active list-subitem' : 'list-subitem'">
-                        <div v-if='subitem.subcategories'
-                            class="has_submenu">
-                            <div @click='toggleMenu(subitem.name)'
-                                :toggles='subitem.name'
-                                :class="activeClasses.main === subitem.name ? 'submenu-heading up-arrow' : 'submenu-heading down-arrow'">
-                                {{$t(subitem.label)}}
-                            </div>
-                            <ul class='submenu' :id='subitem.name'>
-                                <li v-for='subsubitem in subitem.subcategories'
-                                v-if="$auth.user().permissions_array !== undefined && $auth.user().permissions_array.includes(subsubitem.permission)"
-                                :class="(activeClasses.sub === subsubitem.link || activeClasses.sub === subsubitem.link+'.'+subsubitem.type)? 'active list-subitem' : 'list-subitem'">
-                                    <router-link  :to="{ name: subsubitem.link, params: {type: subsubitem.type} }">{{ $t(subsubitem.label) }} </router-link>
-                                </li>
-                            </ul>
-                        </div>
-                        <router-link v-if='!subitem.subcategories' :to="{ name: subitem.link, params: {type: subitem.type} }">{{ $t(subitem.label) }}</router-link>
-                    </li>
-                </ul>
-            </div>
-            <div v-else class="main-menu-clickable">
-                <router-link :to="{ name: item.link }" :class="activeClasses.main === item.link ? 'active list-subitem' : 'list-subitem'">{{$t(item.label)}}</router-link>
-            </div>
-        </li>
-    </ul>
-</nav>-->
 </template>
