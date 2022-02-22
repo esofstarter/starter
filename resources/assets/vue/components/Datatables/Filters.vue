@@ -51,7 +51,7 @@
                   <label>Status:</label>
                 </div>
                 <div class="kt-form__control">
-                  <select class="form-control" id="kt_form_status">
+                  <select class="form-control bootstrap-select" id="kt_form_status">
                     <option value="">All</option>
                     <option value="1">Pending</option>
                     <option value="2">Delivered</option>
