@@ -91,7 +91,7 @@
 
     <div class="kt-datatable__pager-info">
 
-      <div class="dropdown bootstrap-select kt-datatable__pager-size">
+      <div class="dropdown kt-datatable__pager-size">
         <select id="select-per-page"
                 name="select-per-page"
                 class="selectpicker kt-datatable__pager-size form-control"
