@@ -15,7 +15,6 @@ const AuthResetForm = () => import(/* webpackChunkName: "AuthResetForm" */'../vi
 const UserActivation = () => import(/* webpackChunkName: "UserActivation" */'../views/auth/UserActivation.vue');
 const AccessRestricted = () => import(/* webpackChunkName: "AccessRestricted" */'../views/auth/AccessRestricted.vue');
 const PageNotFound = () => import(/* webpackChunkName: "AccessRestricted" */'../views/layouts/errors/PageNotFound.vue');
-const Error = () => import(/* webpackChunkName: "ErrorPage" */ '../views/front/Error/Error.vue');
 
 Vue.use(VueRouter);
 
