@@ -2,8 +2,6 @@
 import { namespace } from 'vuex-class';
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import BaseAuth from './views/auth/BaseAuth.vue';
-import Locales from './components/Translation/Locales.vue';
-import EventBus from '@/utils/event-bus';
 import {mapState} from "vuex";
 import {isTouchDevice} from "@/utils/userAgentCheck";
 
@@ -11,8 +9,7 @@ const { Action } = namespace('Root');
 
 @Component({
   components: {
-    BaseAuth,
-    Locales
+    BaseAuth
   },
   computed: {
     ...mapState('Root', [
