@@ -17,16 +17,6 @@ class HomeController extends Controller
 
 
     /**
-     * Show the admin application dashboard.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function indexAdmin()
-    {
-        return view('app_admin');
-    }
-
-    /**
      * Run an artisan command from url (used for debugging)
      *
      * @return void

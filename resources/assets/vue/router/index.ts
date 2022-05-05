@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import { frontRouteConfig } from './front';
 import { adminPaths } from './admin';
 
 import { namespace } from 'vuex-class';
@@ -37,7 +36,6 @@ const router = new VueRouter({
     return { x: el.scrollLeft, y: el.scrollTop };
   },
   routes: [
-    frontRouteConfig,
     {
       path: '/',
       component: BaseAuth,
@@ -46,6 +44,13 @@ const router = new VueRouter({
       },
       children: [
         {
+          path: '/',
+          name: 'auth.login',
+          component: AuthLogin,
+          meta: {
+            title: Vue.i18n.translate('login.login', null)
+          }
+        }, {
           path: 'login',
           name: 'auth.login',
           component: AuthLogin,

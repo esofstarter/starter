@@ -95,8 +95,7 @@ const webpackOptions = {
         enabled: false
     },
     entry: {
-        app: './js/app.js',
-        app_admin: './js/app_admin.js'//tried to enable multiple entry points for webpack but it does not seem to be supported
+        app: './js/app.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -183,9 +182,7 @@ mix.version();
 mix
 .options(webpackOptions)
 .sass('resources/assets/sass/app.scss', 'public/css')
-.sass('resources/assets/sass/app-admin.scss', 'public/css')
 .js('resources/assets/vue/app.ts', 'public/js')
-// .js('resources/assets/vue/app_admin.ts', 'public/js')//This breaks sass to css compilation
 .copyDirectory('resources/assets/fonts', 'public/fonts')
 .webpackConfig(webpackConfig)
 .purgeCss({

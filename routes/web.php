@@ -21,7 +21,4 @@ Route::group([
 // It's necessary for the reset password e-mail
 Route::get('password/reset/{token}', 'HomeController@index')->name('password.reset');
 
-Route::get('/login', 'HomeController@indexAdmin')->where('any', '.*');
-Route::get('/admin', 'HomeController@indexAdmin')->where('any', '.*');
-Route::get('/admin/{any}', 'HomeController@indexAdmin')->where('any', '.*');
 Route::get('/{any}', 'HomeController@index')->where('any', '.*');
