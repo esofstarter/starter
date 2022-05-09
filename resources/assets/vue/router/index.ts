@@ -51,13 +51,6 @@ const router = new VueRouter({
             title: Vue.i18n.translate('login.login', null)
           }
         }, {
-          path: 'login',
-          name: 'auth.login',
-          component: AuthLogin,
-          meta: {
-            title: Vue.i18n.translate('login.login', null)
-          }
-        }, {
           path: 'password/reset',
           name: 'auth.reset',
           component: AuthResetLink,
