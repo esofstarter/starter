@@ -19,7 +19,7 @@ const { Action } = namespace('Root');
 })
 export default class App extends Vue {
   @Action('setData') setData;
-  @Action('setFrontActiveClass') setFrontActiveClass;
+  @Action('setFrontActiveClasses') setFrontActiveClasses;
 
   el: any;
   touchDevice: boolean = false;
@@ -69,7 +69,7 @@ export default class App extends Vue {
       });
     }, 500);
 
-    this.setFrontActiveClass(to.name);
+    this.setFrontActiveClasses(to.name);
   }
 
   bodyStyles() {
