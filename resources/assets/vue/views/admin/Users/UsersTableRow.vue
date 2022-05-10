@@ -1,13 +1,15 @@
 <script lang="ts">
     import { Component, Watch, Prop, Vue } from 'vue-property-decorator';
     import TableColumn from '@/components/Datatables/_partials/TableColumn.vue'
+    import dialog from '../../../utils/dialog';
+
 
     @Component({
       components: {
         TableColumn
       },
     })
-    export default class TableRow extends Vue {
+    export default class UsersTableRow extends Vue {
         @Prop() value;
         @Prop() columns;
         @Prop() user;
@@ -23,6 +25,20 @@
               {'id': 2, 'name': 'Shipped'},
               {'id': 3, 'name': 'Delivered'}
             ];
+        }
+
+        async deleteUser(user: User, index: number): Promise<void> {
+          if (!await dialog('general.confirm.delete', true)) {
+            return;
+          }
+          this.axios.post('user/'+index+'/delete')
+            .then(response => {
+              dialog('strings.front.deleted_successfully', false);
+              this.$emit('getData');
+            })
+            .catch(error => {
+              dialog(error.response.data.message, false);
+            });
         }
     }
 </script>

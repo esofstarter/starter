@@ -59,20 +59,33 @@
                     this.roles.push({id: 0, display_name: '- All roles -'});
                 });
         }
-
-        async deleteUser(user: User, index: number): Promise<void> {
-            if (!await dialog('general.confirm.delete', true)) {
-                return;
-            }
-            this.axios.post(this.endpoint+'/'+index+'/delete')
-                .then(response => {
-                    dialog('strings.front.deleted_successfully', false);
-                    this.getData();
-                })
-                .catch(error => {
-                    dialog(error.response.data.message, false);
-                });
+      async deleteUser(user: User, index: number): Promise<void> {
+        if (!await dialog('general.confirm.delete', true)) {
+          return;
         }
+        this.axios.post(this.endpoint+'/'+index+'/delete')
+          .then(response => {
+            dialog('strings.front.deleted_successfully', false);
+            this.getData();
+          })
+          .catch(error => {
+            dialog(error.response.data.message, false);
+          });
+      }
+      async deleteUser(user: User, index: number): Promise<void> {
+        if (!await dialog('general.confirm.delete', true)) {
+          return;
+        }
+        this.axios.post(this.endpoint+'/'+index+'/delete')
+          .then(response => {
+            dialog('strings.front.deleted_successfully', false);
+            this.getData();
+          })
+          .catch(error => {
+            dialog(error.response.data.message, false);
+          });
+      }
+
     }
 </script>
 <template>
@@ -88,7 +101,7 @@
                  @trigger-sort="triggerSort"
                  @get-data="getData"
                  @length="changeLength">
-    <users-table-row v-for="user in datatable_data" :key="user.id" :columns="columns" :user="user"></users-table-row>
+    <users-table-row v-for="user in datatable_data" :key="user.id" :columns="columns" :user="user" @getData="getData"></users-table-row>
   </datatable-new>
 
   <!--<div class="row">

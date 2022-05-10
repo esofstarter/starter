@@ -36,27 +36,11 @@ class NewUserRequest extends ApiFormRequest
             'first_name' => 'required|max:255|min:2',
             'last_name' => 'required|max:255|min:2',
             'email' => 'required|email|min:2|max:255|unique:users,email,'.$this->segment(3),
-            'phone' => 'required|phone:AUTO',
             'password' => 'sometimes|between:6,30|confirmed',
             'roles' => 'required|exists:roles,id',
-            'country_id' => 'required',
-            'uploaded_file' => 'required|file|mimes:jpeg,jpg,png,gif|max:30000',
+            'uploaded_file' => 'file|mimes:jpeg,jpg,png,gif|max:30000',
         ];
 
-        // Check condition to apply proper rules
-        if ($role == 3) {
-            $rules['shipping_details.name'] = 'required|max:255|min:2';
-            $rules['shipping_details.address'] = 'required|max:255|min:2';
-            $rules['shipping_details.city'] = 'required|max:255|min:2';
-            $rules['shipping_details.phone'] = 'required|integer';
-            $rules['shipping_details.country_id'] = 'required';
-
-            $rules['billing_details.name'] = 'required|max:255|min:2';
-            $rules['billing_details.address'] = 'required|max:255|min:2';
-            $rules['billing_details.city'] = 'required|max:255|min:2';
-            $rules['billing_details.phone'] = 'required|integer';
-            $rules['billing_details.country_id'] = 'required';
-        }
 
         return $rules;
     }
@@ -81,10 +65,8 @@ class NewUserRequest extends ApiFormRequest
             'password.required' => 'users.password.required',
             'password.between' => 'users.password.between',
             'password.confirmed' => 'users.password.confirmed',
-            'uploaded_file.file' => 'users.file.required',
             'uploaded_file.max' => 'users.file.max',
             'uploaded_file.mimes' => 'strings.error.validation.uploaded_image',
-            'country_id.required' => 'users.country.required',
         ];
     }
 }

@@ -40,7 +40,7 @@ Route::group([
     Route::get('myprofile', 'Controllers\UserController@getMyProfile');
     Route::get('admins/{count}/{search}', 'Controllers\UserController@getAdminsForDropdown');
     Route::get('dropdown/countries', 'Controllers\UserController@getCountriesForDropdown');
-    Route::get('{id}/delete', 'Controllers\UserController@deleteUser');
+    Route::post('{id}/delete', 'Controllers\UserController@deleteUser');
     Route::get('{id}/get', 'Controllers\UserController@getUser');
     Route::post('new', 'Controllers\UserController@storeUser')->middleware('permission:user_write', 'role:administrator');
     Route::post('{id}/edit', 'Controllers\UserController@updateUser')->middleware('permission:user_write', 'role:administrator');
