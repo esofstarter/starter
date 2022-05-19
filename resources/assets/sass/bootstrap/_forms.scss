@@ -104,6 +104,10 @@
 }
 
 // Validation
+.invalid-feedback {
+	display: block;
+  }
+  
 .validated {
 	.valid-feedback,
 	.invalid-feedback {
