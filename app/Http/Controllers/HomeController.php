@@ -57,6 +57,13 @@ class HomeController extends Controller
                         'link' => 'users.public',
                         'permission' => 'user_view',
                     ],
+                ],
+                [
+                    /////Needs Edit
+                    'label' => 'strings.posts',
+                    'name' => 'item_posts',
+                    'link' => 'post',
+                    'permission' => 'user_view', // Change to dashboard_view
                 ]
             ],
         ];
