@@ -55,6 +55,9 @@ return [
         'first_name' => 'First name',
         'last_name' => 'Last name',
     ],
+    'posts' => [
+        'add' => 'Add post',
+    ],
 
     //ADMIN PAGES
     'appointments' => [

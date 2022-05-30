@@ -19,7 +19,15 @@ const user: UserFormItem = {
   source: 'backend',
   contact_email: ''
 };
+const post: PostFormItem = {
+  id: 0,
+  title: '',
+  body: '',
+  // user_id: 0
+};
 
 export {
-  user
+  user,
+  post
+  ,
 };

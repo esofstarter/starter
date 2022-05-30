@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Applications\Posts\Providers;
+namespace App\Applications\Post\Providers;
 
 use App\Applications\Post\BLL\PostBLL;
 use App\Applications\Post\BLL\PostBLLInterface;

@@ -14,7 +14,13 @@ return [
         'main' => 'Users',
         'admin' => 'Admin Users',
         'public' => 'Public Users',
-        ],
+     ],
+    'posts' => [
+        'main' => 'Posts',
+        'my_posts' => 'My posts',
+        'all_posts' => 'All posts',
+        'add_post' => 'Add post',
+    ],
     'products' => [
         'main' => 'Products'
     ],

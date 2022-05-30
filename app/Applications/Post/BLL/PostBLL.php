@@ -25,7 +25,7 @@ class PostBLL implements PostBLLInterface {
     }
 
     public function savePost($input){
-
+        return $this->postDAL->savePost($input);
     }
 
     public function editPost($id, $input){

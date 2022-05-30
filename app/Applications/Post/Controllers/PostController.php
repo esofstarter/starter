@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Post\Controllers;
+namespace App\Applications\Post\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,8 +22,9 @@ class PostController extends Controller
     public function getPostsByUser(){
         return $this->postBLL->getPostsByUser();
     }
-    public function savePost(){
-        return $this->postBLL->savePost();
+    public function savePost(Request $request){
+        // dd($request);
+        return $this->postBLL->savePost($request);
     }
     public function editPost(){
         return $this->postBLL->editPost();

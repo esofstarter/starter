@@ -200,6 +200,7 @@ return [
 
         // Load module service providers before the RouteServiceProvider
         App\Applications\User\Providers\UserServiceProvider::class,
+        App\Applications\Post\Providers\PostServiceProvider::class,
         App\Util\Providers\UtilServiceProvider::class,
 
         // Load the RouteServiceProvider last because it has the any route redirect

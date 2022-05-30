@@ -86,6 +86,11 @@ return [
     'status' => 'Status',
     'please_select' => 'Bitte auswählen ...',
 	'csv_export.generating' => 'CSV-Export in Bearbeitung',	
-	'error.validation' => 'Aktualisierung fehlgeschlagen',	
+	'error.validation' => 'Aktualisierung fehlgeschlagen',
+    'posts' => [
+        'main' => 'Posts',
+        'my_posts' => 'My posts',
+        'all_posts' => 'All posts',
+        ],	
 
 ];

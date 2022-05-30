@@ -58,13 +58,33 @@ class HomeController extends Controller
                         'permission' => 'user_view',
                     ],
                 ],
-                [
-                    /////Needs Edit
-                    'label' => 'strings.posts',
-                    'name' => 'item_posts',
-                    'link' => 'post',
-                    'permission' => 'user_view', // Change to dashboard_view
-                ]
+            ],
+            [
+                'label' => 'strings.posts.main',
+                'name' => 'item_posts',
+                'link' => 'posts',
+                'expanded' => false,
+                'permission' => 'user_view',
+                'subcategories' => [
+                    [
+                        'label' => 'strings.posts.my_posts',
+                        'name' => 'my_posts',
+                        'link' => 'my_posts',
+                        'permission' => 'user_view',
+                    ],
+                    [
+                        'label' => 'strings.posts.all_posts',
+                        'name' => 'all_posts',
+                        'link' => 'all_posts',
+                        'permission' => 'user_view',
+                     ],
+                     [
+                        'label' => 'strings.posts.add_post',
+                        'name' => 'add_posts',
+                        'link' => 'add_posts',
+                        'permission' => 'user_view',
+                    ],
+                ],
             ],
         ];
 
