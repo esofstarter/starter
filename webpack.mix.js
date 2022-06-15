@@ -48,7 +48,7 @@ const webpackConfig = {
     resolve: {
         extensions: ['*', '.js', '.jsx', '.vue', '.ts', '.tsx', '.css', '.scss', '.sass'],
         alias: {
-            'vue$': (process.env.NODE_ENV !== 'production')? 'vue/dist/vue.esm.js': 'vue/dist/vue.runtime.esm.js',
+            'vue$': (process.env.NODE_ENV !== 'production') ? 'vue/dist/vue.esm.js' : 'vue/dist/vue.runtime.esm.js',
             styles: path.resolve(__dirname, 'resources/assets/sass'),
             '@': path.resolve(__dirname, 'resources/assets/vue'),
         }
@@ -156,6 +156,36 @@ module.exports = {
     ],
     module: {
         rules: [
+//             // ...
+//             {
+//                 test: /\.(scss)$/,
+//                 use: [{
+//                     // inject CSS to page
+//                     loader: 'style-loader'
+//                 }, {
+//                     // translates CSS into CommonJS modules
+//                     loader: 'css-loader'
+//                 }, {
+//                     // Run postcss actions
+//                     loader: 'postcss-loader',
+//                     options: {
+//                         // `postcssOptions` is needed for postcss 8.x;
+//                         // if you use postcss 7.x skip the key
+//                         postcssOptions: {
+//                             // postcss plugins, can be exported to postcss.config.js
+//                             plugins: function () {
+//                                 return [
+//                                     require('autoprefixer')
+//                                 ];
+//                             }
+//                         }
+//                     }
+//                 }, {
+//                     // compiles Sass to CSS
+//                     loader: 'sass-loader'
+//                 }]
+//             }
+//   // ...
             {
                 test: /\.scss$/,
                 use: [
@@ -180,22 +210,22 @@ mix.sourceMaps();
 mix.version();
 
 mix
-.options(webpackOptions)
-.sass('resources/assets/sass/app.scss', 'public/css')
-.js('resources/assets/vue/app.ts', 'public/js')
-.copyDirectory('resources/assets/fonts', 'public/fonts')
-.webpackConfig(webpackConfig)
-.purgeCss({
-    enabled: mix.inProduction(),
-    // Your custom globs are merged with the default globs. If you need to
-    // fully replace the globs, use the underlying `paths` option instead.
-    globs: [
-        path.join(__dirname, 'node_modules/simplemde/!**!/!*.js'),
-    ],
-    // customSyntax: path.join(__dirname, '/node_modules/postcss-sass'),
-    extensions: ['html', 'js', 'php', 'vue'],
-    // Other options are passed through to Purgecss
-    whitelistPatterns: [/language/, /hljs/,/^hooper-/,/^slick-/,/^pswp/],
-    whitelistPatternsChildren: [/^markdown$/,/^hooper-/,/^slick-/,/^pswp/],
-    whitelist: ['custom-control-input'],
-});
+    .options(webpackOptions)
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .js('resources/assets/vue/app.ts', 'public/js')
+    .copyDirectory('resources/assets/fonts', 'public/fonts')
+    .webpackConfig(webpackConfig)
+    .purgeCss({
+        enabled: mix.inProduction(),
+        // Your custom globs are merged with the default globs. If you need to
+        // fully replace the globs, use the underlying `paths` option instead.
+        globs: [
+            path.join(__dirname, 'node_modules/simplemde/!**!/!*.js'),
+        ],
+        // customSyntax: path.join(__dirname, '/node_modules/postcss-sass'),
+        extensions: ['html', 'js', 'php', 'vue'],
+        // Other options are passed through to Purgecss
+        whitelistPatterns: [/language/, /hljs/, /^hooper-/, /^slick-/, /^pswp/],
+        whitelistPatternsChildren: [/^markdown$/, /^hooper-/, /^slick-/, /^pswp/],
+        whitelist: ['custom-control-input'],
+    });

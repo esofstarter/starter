@@ -13,18 +13,20 @@ import AdminSection from "@/components/AdminSection/AdminSection";
 import UnsavedChangesModal from "@/features/Front/Users/_components/UnsavedChangesModal.vue";
 import getPhotoPath from "@/utils/imageProcessing";
 
+import { CTextarea } from '@coreui/vue/src/components/form/'
 import { post } from "@/utils/Objects";
 // import {createFile} from "@/utils/edgeFileUpload";
-
+import '@coreui/coreui/dist/css/coreui.min.css';
 const { State } = namespace("Root");
 const { Action } = namespace("Root");
-
+// Vue.component('CFormTextarea', CFormTextarea);
 @Component({
   components: {
     FormInput,
     AdminSection,
     UnsavedChangesModal,
     Textarea,
+    CTextarea,
   },
 })
 export default class PostForm extends Mixins(FormMixin) {
@@ -34,6 +36,7 @@ export default class PostForm extends Mixins(FormMixin) {
   @Action("setMenu") setMenu;
   @Action("setActiveClasses") setActiveClasses;
 
+  
   edit: boolean;
   form: Form;
   item: PostFormItem;
@@ -114,13 +117,21 @@ export default class PostForm extends Mixins(FormMixin) {
                   :form="form"
                 ></form-input>
               </div>
-              <div class="col-md-12 col-sm-6">
+              <!-- <div class="col-md-12 col-sm-6">
                 <form-input
                   :id="'post_body'"
                   :label="'posts.basic.post'"
                   v-model="form.body"
                   :form="form"
                 ></form-input>
+              </div> -->
+              <div class="col-md-12 col-sm-6">
+                  <c-textarea
+                    id="'post_body'"
+                    label='Post'
+                    rows="21"
+                    text="Must be 50-1490 words long."
+                  ></c-textarea>
               </div>
             </div>
           </template>
