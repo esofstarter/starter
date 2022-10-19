@@ -30,6 +30,6 @@ Route::group([
     Route::get('{user}/get', 'Controllers\PostController@getPostById');
     Route::post('{id}/edit', 'Controllers\PostController@editPost');
     Route::get('{id}/delete', 'Controllers\PostController@deletePost');
-    Route::get('draw', 'Controllers\PostController@allPosts');
+    Route::post('draw', 'Controllers\PostController@allPosts');
     Route::post('new', 'Controllers\PostController@savePost');
 });

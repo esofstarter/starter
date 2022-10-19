@@ -18,7 +18,7 @@
 
     export default class PostsDatatable extends Mixins(DatatableMixin) {
 
-        endpoint: string = 'post';
+        endpoint: string = 'posts';
         datatable_data: UserTableRow[] = [];
         // length: number;
         roles: Array<any>;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Applications\User\Requests;
+namespace App\Applications\Post\Requests;
 
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\ApiFormRequest;
@@ -9,7 +9,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 
-class UserRequest extends ApiFormRequest
+class PostRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,20 +32,24 @@ class UserRequest extends ApiFormRequest
         $role = $this->request->get('roles'); // Get the input value
 
         $rules = [
-            'first_name' => 'required|max:255|min:2',
-            'last_name' => 'required|max:255|min:2',
-            'email' => 'required|email|min:2|max:255|unique:users,email,'.$this->segment(3),
-            'password' => 'required_with:password_confirmation|nullable|between:6,30|confirmed',
-            'password_confirmation' => 'required_with:password|nullable|between:6,30|same:password',
-            'roles' => 'required|exists:roles,id',
-            'uploaded_file' => 'file|mimes:jpeg,jpg,png,gif|max:30000',
+            'title' => 'required|max:255|min:2',
+            'body' => 'required|min:5',
+            'id' => 'required',
+            'user_id' => 'required',
+            // 'password_confirmation' => 'required_with:password|nullable|between:6,30|same:password',
+            // 'roles' => 'required|exists:roles,id',
+            // 'uploaded_file' => 'file|mimes:jpeg,jpg,png,gif|max:30000',
         ];
 
         return $rules;
     }
     public function messages(){
         return [
-
+            'title.max' => 'Title too long.',
+            'title.min' => 'Title too short',
+            'body.min' => 'Text too short.',
+            'id.required' => 'Post id is missing.',
+            'user_id.required' => 'User id is missing.'
         ];
     }
 }

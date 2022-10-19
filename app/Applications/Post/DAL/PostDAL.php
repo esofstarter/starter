@@ -25,9 +25,8 @@ class PostDAL implements PostDALInterface {
         })->get();
     }
     public function savePost($input){
-        $post = $this->post->create($input);
-        dd($input);
-        return $post;
+        
+        return $this->post->create($input);
     }
     public function editPost($post, $input){
         return $post->update($input);
