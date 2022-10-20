@@ -30,8 +30,8 @@ class PostController extends Controller
     public function editPost(){
         return $this->postBLL->editPost();
     }
-    public function deletePost(){
-        return $this->postBLL->deletePost();
+    public function deletePost($id){
+        return $this->postBLL->deletePost($id);
     }
 
 }

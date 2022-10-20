@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Applications\Post\DAL;
+use Illuminate\Support\Facades\DB;
 use App\Applications\Post\Model\Posts;
 use App\Applications\User\Model\User;
 
@@ -14,6 +15,9 @@ class PostDAL implements PostDALInterface {
         $this->user = $user;
     }
     public function getAll(){
+        // $query = DB::table('users')->select('username')->join('posts', 'user_id', '=', 'users.id');
+        // $username = $query->get();
+
         return $this->post::all();
     }
     public function getPostById($id){

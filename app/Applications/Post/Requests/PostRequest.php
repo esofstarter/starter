@@ -35,7 +35,7 @@ class PostRequest extends ApiFormRequest
             'title' => 'required|max:255|min:2',
             'body' => 'required|min:5',
             'id' => 'required',
-            'user_id' => 'required',
+            // 'user_id' => 'required',
             // 'password_confirmation' => 'required_with:password|nullable|between:6,30|same:password',
             // 'roles' => 'required|exists:roles,id',
             // 'uploaded_file' => 'file|mimes:jpeg,jpg,png,gif|max:30000',

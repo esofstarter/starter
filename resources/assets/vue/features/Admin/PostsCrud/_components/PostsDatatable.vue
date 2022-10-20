@@ -5,13 +5,13 @@
     import Pagination from '../../../../components/Datatables/Pagination.vue'
     import { DatatableMixin } from '@/mixins/DatatableMixin';
     import DatatableNew from "@/components/Datatables/DatatableNew.vue";
-    import UsersTableRow from '@/views/admin/Users/UsersTableRow.vue';
+    import PostsTableRow from './PostsTableRow.vue';
 
     @Component({
         components: {
             Datatable,
             Pagination,
-            UsersTableRow,
+            PostsTableRow,
             DatatableNew,
         }
     })
@@ -20,14 +20,12 @@
 
         endpoint: string = 'posts';
         datatable_data: UserTableRow[] = [];
-        // length: number;
         roles: Array<any>;
         statuses: Array<any>;
+        tableData;
 
         constructor() {
             super();
-            // this.datatable_data = [];
-            // this.length = 10;
             this.roles = [];
             this.statuses = [
                 {id: 3, name: 'All status'},
@@ -35,6 +33,16 @@
                 {id: 1, name: 'Disabled'},
             ];
             this.sortKey = 'first_name';
+            this.tableData = {
+                draw: 1,
+                length: 10,
+                search: '',
+                column: 0,
+                dir: 'desc',
+                error: false,
+                errorMessage: '',
+                noRecords: false,
+            };
         }
 
         async mounted() {
@@ -42,12 +50,22 @@
                 this.sortOrders[column.name] = -1;
             });
             await this.fetchRoles();
-            await this.getData();
+            // await this.getData();
+            await this.fetchData();
             if (Number(Vue.router.currentRoute.params.success)) {
                 this.success = 1;
             } else {
                 this.success = 0;
             }
+        }
+
+        fetchData() {
+            this.axios.post('posts/draw', this.tableData).then(resp => {
+                this.datatable_data = resp.data;
+                this.loading = false;
+            }).catch(err => {
+                console.log(err.message);
+            })
         }
 
         fetchRoles() {
@@ -57,20 +75,6 @@
                     this.roles.push({id: 0, display_name: '- All roles -'});
                 });
         }
-
-        // async deleteRow(index: number): Promise<void> {
-        //     if (!await dialog('general.confirm.delete', true)) {
-        //       return;
-        //     }
-        //     this.axios.get(this.endpoint+'/'+index+'/delete')
-        //       .then(response => {
-        //         dialog('strings.front.deleted_successfully', false);
-        //         this.getData();
-        //       })
-        //       .catch(error => {
-        //         dialog(error.response.data.message, false);
-        //       });
-        // }
     }
 </script>
 <template>
@@ -86,50 +90,6 @@
                  @trigger-sort="triggerSort"
                  @get-data="getData"
                  @length="changeLength">
-    <users-table-row v-for="user in datatable_data" :key="user.id" :columns="columns" :user="user"></users-table-row>
+    <posts-table-row v-for="post in datatable_data" :key="post.id" :columns="columns" :post="post"></posts-table-row>
   </datatable-new>
-
-
-  <!--<div class="row">
-    <div class="col-xl-11">
-     <div class="datatable users_datatable">
-         <datatable-header v-model="tableData" :columns="columns" :addRouteName="'add.user'" :langKey="'users'" :endpoint="endpoint+'/export'" :export_file="'admin_users'" :success="success" @getData="getData"></datatable-header>
-         <div class="user-table-wrapper">
-             <datatable :columns="columns"
-                        :sort-key="sortKey"
-                        :sort-orders="sortOrders"
-                        @sort="sortBy"
-                        class="table-custom">
-                 <tbody>
-                  <tr v-for="user in datatable_data" :key="user.id">
-                    <td>{{user.first_name}}</td>
-                    <td>{{user.last_name}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.roles}}</td>
-                    <td v-if="user.is_disabled">{{ $t('users.status.disabled') }}</td>
-                    <td v-else>{{ $t('users.status.enabled') }}</td>
-                    <td>
-                      <router-link v-if="$auth.user().permissions_array.includes('user_write')"
-                                   :to="{ name: 'edit.user', params: { userId: user.id }}"
-                                   exact="">
-                          <i aria-hidden="true"
-                             class="fa fa-pencil-square-o"></i> 
-                          {{ $t('buttons.edit') }}
-                      </router-link>
-                    </td>
-                    <td>
-                        <i v-if="$auth.user().permissions_array.includes('user_write')"
-                           @click="deleteRow(user.id)"
-                           variant="link"
-                           aria-hidden="true"
-                           class="fa fa-trash-o"></i>
-                    </td>
-                  </tr>
-                </tbody>
-             </datatable>
-         </div>
-         <pagination :pagination="pagination" @nav="getData" @length="changeLength"/>
-      </div>
-    </div>
-  </div>-->
 </template>

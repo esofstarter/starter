@@ -32,10 +32,11 @@ class PostBLL implements PostBLLInterface {
     }
 
     public function editPost($id, $input){
+        return $this->postDAL->editPost($input);
       }
 
     public function deletePost($id){
-
+        return $this->postDAL->deletePost($id);
     }
 
     public function getEntryDataArray($request) {

@@ -9,7 +9,7 @@ const MyProfile = () => import(/* webpackChunkName: "MyProfile" */ '../views/adm
 const UserForm = () => import(/* webpackChunkName: "EditUser" */ '../features/Admin/UsersCrud/_components/UserForm.vue');
 const EditUserAdditionalData = () => import(/* webpackChunkName: "EditUserAdditionalData" */ '../views/admin/Users/EditUserAdditionalData.vue');
 const PostForm = () => import(/* webpackChunkName: "EditPost" */ '../features/Admin/PostsCrud/_components/PostForm.vue');
-const Posts = () => import(/* webpackChunkName: "EditPost" */ '../features/Admin/PostsCrud/_components/PostsDatatable.vue');
+const Posts = () => import(/* webpackChunkName: "EditPost" */ '../features/Admin/PostsCrud/_components/Posts.vue');
 /*INSERT NEW IMPORTS HERE*/
 
 export let adminPaths: RouteConfig =
