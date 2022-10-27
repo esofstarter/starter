@@ -19,20 +19,22 @@ class PostBLL implements PostBLLInterface {
     }
 
     public function getPostById($id){
-        return $this->postDAL->getPostById();
+        return $this->postDAL->getPostById($id);
     }
     public function getPostsByUser($id){
 
     }
 
-    public function savePost($input){
-        $post = $this->getEntryDataArray($input);
+    public function savePost($data){
+        $post = $this->getEntryDataArray($data);
         // dd($post);
         return $this->postDAL->savePost($post);
     }
 
-    public function editPost($id, $input){
-        return $this->postDAL->editPost($input);
+    public function editPost($request, $id){
+        $post_data = $request->all();
+        $post = $this->postDAL->getPostById($id);
+        $this->postDAL->editPost($post, $post_data);
       }
 
     public function deletePost($id){
@@ -44,6 +46,7 @@ class PostBLL implements PostBLLInterface {
         $input['title'] = $request['title'];
         $input['body'] = $request['body'];
         $input['user_id'] = Auth::user()->id;
+        $input['creator'] =  Auth::user()->first_name;
 
         return $input;
     }

@@ -17,8 +17,8 @@ class PostController extends Controller
     public function allPosts(){
         return $this->postBLL->getAllPosts();
     }
-    public function getPostById(){
-        return $this->postBLL->getPostById();
+    public function getPostById($id){
+        return $this->postBLL->getPostById($id);
     }
     public function getPostsByUser(){
         return $this->postBLL->getPostsByUser();
@@ -27,8 +27,8 @@ class PostController extends Controller
         // dd($request);
         return $this->postBLL->savePost( $request);
     }
-    public function editPost(){
-        return $this->postBLL->editPost();
+    public function editPost(PostRequest $request, $id){
+        return $this->postBLL->editPost($request,$id);
     }
     public function deletePost($id){
         return $this->postBLL->deletePost($id);

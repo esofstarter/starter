@@ -4,13 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Posts extends Migration
+class CreatePostsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
@@ -18,6 +13,7 @@ class Posts extends Migration
             $table->string('title')->nullable(false);
             $table->text('body')->nullable(false);
             // $table->string('date')->nullable(false);
+            $table->string('creator');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });

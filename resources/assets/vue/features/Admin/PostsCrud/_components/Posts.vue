@@ -35,7 +35,7 @@
                 {id: 0, width: '15%', label: 'id', name: 'id', sortable: true},
                 {id: 1, width: '15%', label: 'title', name: 'title', sortable: true},
                 {id: 2, width: '20%', label: 'body', name: 'body', sortable: true},
-                {id: 3, width: '10%', label: 'created_by', name: 'created_by', sortable: true},
+                {id: 3, width: '10%', label: 'creator', name: 'creator', sortable: true},
                 {id: 5, width: '5%', label: 'strings.actions', name: 'actions', sortable: false},
                 {id: 6, width: '5%', label: 'strings.delete', name: 'actions', sortable: false}
             ];

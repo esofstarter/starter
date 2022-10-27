@@ -41,12 +41,13 @@ export default class PostForm extends Mixins(FormMixin) {
   constructor() {
     super();
     this.item = cloneDeep(post);
-    this.edit = Vue.router.currentRoute.name == "edit.posts";
+    this.edit = Vue.router.currentRoute.name == "edit.post";
     this.form = new Form(this.item);
   }
 
   mounted() {
     this.fetchPost();
+    console.log('edit: ', this.edit, ', route name: ', Vue.router.currentRoute.name)
   }
 
   getRoute() {
@@ -64,7 +65,9 @@ export default class PostForm extends Mixins(FormMixin) {
     if (this.edit) {
       var getRoute = "/posts/" + Vue.router.currentRoute.params.postId + "/get";
       this.axios.get(getRoute).then((response) => {
-        this.item = response.data;
+        this.form.title = response.data.title;
+        this.form.body = response.data.body;
+        this.form.id = response.data.id;
       });
     }
     this.loading = false;
@@ -140,7 +143,7 @@ export default class PostForm extends Mixins(FormMixin) {
 
         <router-link
           :loading="loading"
-          :to="`/posts/my_posts`"
+          :to="`/admin/all_posts`"
           exact=""
           class="btn btn-outline-secondary"
           slot="footer"

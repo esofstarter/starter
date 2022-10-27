@@ -64,7 +64,7 @@
     </table-column>
 
     <table-column :width="columns[3].width">
-      {{ post.user_id }}
+      {{ post.creator }}
     </table-column>
 
     <table-column :width="columns[4].width">

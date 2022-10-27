@@ -160,7 +160,7 @@ export let adminPaths: RouteConfig =
         }
       }, 
       {
-        path: 'usersedit/:userId/edit',
+        path: 'postsedit/:postId/edit',
         name: 'edit.post',
         component: PostForm,
         meta: {
