@@ -34,7 +34,7 @@
           this.axios.get('posts/'+index+'/delete')
             .then(response => {
               dialog('strings.front.deleted_successfully', false);
-              this.$emit('getData');
+              this.$emit('get-data');
             })
             .catch(error => {
               dialog(error.response.data.message, false);

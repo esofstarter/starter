@@ -88,8 +88,8 @@
                  :addRouteName="'add_posts'"
                  :datatableData="datatable_data"
                  @trigger-sort="triggerSort"
-                 @get-data="getData"
+                 @get-data="fetchData"
                  @length="changeLength">
-    <posts-table-row v-for="post in datatable_data" :key="post.id" :columns="columns" :post="post"></posts-table-row>
+    <posts-table-row v-for="post in datatable_data" :key="post.id" :columns="columns" @get-data="fetchData" :post="post"></posts-table-row>
   </datatable-new>
 </template>
