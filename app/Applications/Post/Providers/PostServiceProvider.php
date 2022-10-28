@@ -2,8 +2,16 @@
 
 namespace App\Applications\Post\Providers;
 
+use App\Applications\Post\BLL\CategoryBLL;
+use App\Applications\Post\BLL\CategoryBLLInterface;
+use App\Applications\Post\BLL\CommentBLL;
+use App\Applications\Post\BLL\CommentBLLInterface;
 use App\Applications\Post\BLL\PostBLL;
 use App\Applications\Post\BLL\PostBLLInterface;
+use App\Applications\Post\DAL\CategoryDAL;
+use App\Applications\Post\DAL\CategoryDALInterface;
+use App\Applications\Post\DAL\CommentDAL;
+use App\Applications\Post\DAL\CommentDALInterface;
 use App\Applications\Post\DAL\PostDAL;
 use App\Applications\Post\DAL\PostDALInterface;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +53,10 @@ class PostServiceProvider extends ServiceProvider
     {
         $this->app->bind(PostDALInterface::class, PostDAL::class);
         $this->app->bind(PostBLLInterface::class, PostBLL::class);
+        $this->app->bind(CommentBLLInterface::class, CommentBLL::class);
+        $this->app->bind(CommentDALInterface::class, CommentDAL::class);
+        $this->app->bind(CategoryBLLInterface::class, CategoryBLL::class);
+        $this->app->bind(CategoryDALInterface::class, CategoryDAL::class);
     }
 
     public function map()
