@@ -21,6 +21,12 @@ return [
         'all_posts' => 'All posts',
         'add_post' => 'Add post',
     ],
+    'category' => [
+        'main' => 'Categories',
+        'my_category' => 'My categories',
+        'all_categories' => 'All categories',
+        'add_category' => 'Add category'
+    ],
     'products' => [
         'main' => 'Products'
     ],

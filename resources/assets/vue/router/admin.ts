@@ -11,6 +11,8 @@ const EditUserAdditionalData = () => import(/* webpackChunkName: "EditUserAdditi
 const PostForm = () => import(/* webpackChunkName: "EditPost" */ '../features/Admin/PostsCrud/_components/PostForm.vue');
 const Posts = () => import(/* webpackChunkName: "EditPost" */ '../features/Admin/PostsCrud/_components/Posts.vue');
 const Category = () => import(/* webpackChunkName: "EditCategory" */ '../features/Admin/PostsCrud/_components/EditCategory.vue');
+const CategoryForm = () => import(/* webpackChunkName: "CategoryForm" */ '../features/Admin/PostsCrud/_components/CategoryForm.vue');
+const Categories = () => import(/* webpackChunkName: "Category" */ '../features/Admin/PostsCrud/_components/Categories.vue');
 /*INSERT NEW IMPORTS HERE*/
 
 export let adminPaths: RouteConfig =
@@ -173,7 +175,7 @@ export let adminPaths: RouteConfig =
         }
       },
       {
-        path: 'postsedit/:postId/edit',
+        path: 'categoryedit/:categoryId/edit',
         name: 'edit.category',
         component: Category,
         meta: {
@@ -185,13 +187,25 @@ export let adminPaths: RouteConfig =
         }
       },
       {
-        path: 'postsedit/:postId/edit',
+        path: 'add_categories',
         name: 'add.categories',
-        component: PostForm,
+        component: CategoryForm,
         meta: {
-          title: Vue.i18n.translate('posts.edit_post', null),
+          title: Vue.i18n.translate('category.add_category', null),
           auth: {
             roles: ['user_write'],
+            forbiddenRedirect: '/access/restricted'
+          }
+        }
+      },
+      {
+        path: 'all_categories',
+        name: 'all.categories',
+        component: Categories,
+        meta: {
+          title: Vue.i18n.translate('category.all_category', null),
+          auth: {
+            roles: ['user_view'],
             forbiddenRedirect: '/access/restricted'
           }
         }

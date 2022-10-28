@@ -86,8 +86,8 @@ class HomeController extends Controller
                     ],
                     [
                         'label' => 'strings.category.add_category',
-                        'name' => 'add_category',
-                        'link' => 'add_category',
+                        'name' => 'add_categories',
+                        'link' => 'add_categories',
                         'permission' => 'user_view',
                     ],
                     [

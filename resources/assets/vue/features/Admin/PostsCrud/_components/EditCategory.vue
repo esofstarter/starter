@@ -2,13 +2,14 @@
   import { Component, Vue } from 'vue-property-decorator';
   import { namespace } from 'vuex-class';
   import PostForm from './PostForm.vue';
+  import CategoryForm from '@/features/Admin/PostsCrud/_components/CategoryForm.vue';
   const { Action } = namespace('Root');
   @Component({
                components: {
-                 PostForm,
+                 CategoryForm,
                },
              })
-  export default class EditUser extends Vue {
+  export default class EditCategory extends Vue {
     @Action('setBackUrl') setBackUrl;
     @Action('setMenu') setMenu;
     @Action('setActiveClasses') setActiveClasses;
@@ -27,5 +28,5 @@
 </script>
 
 <template>
-  <post-form/>
+  <category-form/>
 </template>

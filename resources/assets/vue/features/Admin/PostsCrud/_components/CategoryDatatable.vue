@@ -5,18 +5,18 @@
   import Pagination from '../../../../components/Datatables/Pagination.vue'
   import { DatatableMixin } from '@/mixins/DatatableMixin';
   import DatatableNew from "@/components/Datatables/DatatableNew.vue";
-  import PostsTableRow from './PostsTableRow.vue';
+  import CategoryTableRow from './CategoriesTableRow.vue';
 
   @Component({
                components: {
                  Datatable,
                  Pagination,
-                 PostsTableRow,
+                 CategoryTableRow,
                  DatatableNew,
                }
              })
 
-  export default class PostsDatatable extends Mixins(DatatableMixin) {
+  export default class CategoryDatatable extends Mixins(DatatableMixin) {
 
     endpoint: string = 'posts';
     datatable_data: UserTableRow[] = [];
@@ -101,6 +101,6 @@
                  @trigger-sort="triggerSort"
                  @get-data="fetchCategories"
                  @length="changeLength">
-    <posts-table-row v-for="post in datatable_data" :key="post.id" :columns="columns" @get-data="fetchData" :post="post"></posts-table-row>
+    <category-table-row v-for="category in datatable_data" :key="category.id" :columns="columns" @get-data="fetchCategories" :category="category"></category-table-row>
   </datatable-new>
 </template>
