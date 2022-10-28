@@ -11,7 +11,7 @@
             PostsDatatable,
         },
     })
-    export default class Users extends Vue {
+    export default class Posts extends Vue {
         @Action('setBackUrl') setBackUrl;
         @Action('setMenu') setMenu;
         @Action('setActiveClasses') setActiveClasses;
@@ -36,6 +36,7 @@
                 {id: 1, width: '15%', label: 'title', name: 'title', sortable: true},
                 {id: 2, width: '20%', label: 'body', name: 'body', sortable: true},
                 {id: 3, width: '10%', label: 'creator', name: 'creator', sortable: true},
+                {id: 4, width: '5%', label: 'image', name: 'image', sortable: false},
                 {id: 5, width: '5%', label: 'strings.actions', name: 'actions', sortable: false},
                 {id: 6, width: '5%', label: 'strings.delete', name: 'actions', sortable: false}
             ];
