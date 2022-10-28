@@ -21,7 +21,7 @@ Route::group([
     Route::post('confirm', 'Controllers\SlaController@confirm');
 });
 
-// Authorized routes
+// Authorized  post routes
 Route::group([
     'middleware' => ['api','jwt.renew'],
     'prefix' => 'posts',
@@ -33,4 +33,32 @@ Route::group([
     Route::get('{id}/delete', 'Controllers\PostController@deletePost');
     Route::post('draw', 'Controllers\PostController@allPosts');
     Route::post('new', 'Controllers\PostController@savePost');
+});
+
+//Comment routes
+Route::group([
+    'middleware' => ['api','jwt.renew'],
+    'prefix' => 'comments',
+], function () {
+    Route::get('all', 'Controllers\CommentController@allComments');
+    Route::get('{id}/get', 'Controllers\CommentController@getCommentById');
+    Route::get('{user}/get', 'Controllers\CommentController@getCommentByUser');
+    Route::post('{id}/edit', 'Controllers\CommentController@editComment');
+    Route::get('{id}/delete', 'Controllers\CommentController@deleteComment');
+    Route::post('draw', 'Controllers\CommentController@allComment');
+    Route::post('new', 'Controllers\CommentController@saveComment');
+});
+
+//Category routes
+Route::group([
+    'middleware' => ['api','jwt.renew'],
+    'prefix' => 'category',
+], function () {
+    Route::get('all', 'Controllers\CategoryController@allCategories');
+    Route::get('{id}/get', 'Controllers\CategoryController@getCategoryById');
+//    Route::get('{user}/get', 'Controllers\CategoryController@getCommentByUser');
+    Route::post('{id}/edit', 'Controllers\CategoryController@editCategory');
+    Route::get('{id}/delete', 'Controllers\CategoryController@deleteCategory');
+    Route::post('draw', 'Controllers\CategoryController@allCategory');
+    Route::post('new', 'Controllers\CategoryController@saveCategory');
 });

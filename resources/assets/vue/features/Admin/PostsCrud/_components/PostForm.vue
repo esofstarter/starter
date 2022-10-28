@@ -8,10 +8,10 @@ import "bootstrap";
 import FormInput from "../../_partials/FormInput.vue";
 import Textarea from "../../_partials/TextArea.vue";
 import { FormMixin } from "@/mixins/FormMixin";
-import EventBus from "@/utils/event-bus";
 import AdminSection from "@/components/AdminSection/AdminSection";
 import UnsavedChangesModal from "@/features/Front/Users/_components/UnsavedChangesModal.vue";
 import getPhotoPath from "@/utils/imageProcessing";
+    import Multiselect from 'vue-multiselect';
 
 import { post } from "@/utils/Objects";
 // import {createFile} from "@/utils/edgeFileUpload";
@@ -25,6 +25,7 @@ const { Action } = namespace("Root");
     AdminSection,
     UnsavedChangesModal,
     Textarea,
+    Multiselect
   },
 })
 export default class PostForm extends Mixins(FormMixin) {
@@ -37,6 +38,7 @@ export default class PostForm extends Mixins(FormMixin) {
   edit: boolean;
   form: Form;
   item: PostFormItem;
+  categories: any = [];
 
   constructor() {
     super();
@@ -47,7 +49,7 @@ export default class PostForm extends Mixins(FormMixin) {
 
   mounted() {
     this.fetchPost();
-    console.log('edit: ', this.edit, ', route name: ', Vue.router.currentRoute.name)
+    this.fetchCategories();
   }
 
   getRoute() {
@@ -71,6 +73,13 @@ export default class PostForm extends Mixins(FormMixin) {
       });
     }
     this.loading = false;
+  }
+
+  fetchCategories() {
+    // this.axios.get('/categories/get').then(resp => {
+    //   this.categories = resp.data;
+    // })
+    this.categories = [ {id:1, name:'Enrico Price'}, { id:2, name:'Libby Bosco'}, { id:3, name:'Libby Bosgrtgco'}, { id:4, name:'Libby Boscgthto'}];
   }
 
   getAvatar() {
@@ -124,6 +133,17 @@ export default class PostForm extends Mixins(FormMixin) {
                   v-model="form.body"
                   :form="form"
                 ></form-input>
+              </div>
+              <div class="col-md-12 col-sm-6">
+                <multiselect :options="categories" v-model="form.categories" :multiple="true">
+                  <template slot="option" slot-scope="{ option }">
+                    <span class="custom__option"><span>{{ option.name }}</span></span>
+                  </template>
+                  <template slot="tag" slot-scope="{ option, remove }">
+                    <span class="custom__tag"><span>{{ option.name }}</span>
+                    <span class="custom__remove" @click="remove(option)">x</span></span>
+                  </template>
+                </multiselect>
               </div>
             </div>
           </template>

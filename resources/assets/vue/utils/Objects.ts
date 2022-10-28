@@ -23,6 +23,7 @@ const post: PostFormItem = {
   id: 0,
   title: '',
   body: '',
+  categories: []
   // user_id: 0
 };
 
