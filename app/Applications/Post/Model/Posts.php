@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Posts extends Model
 {
 
-    protected $table='posts';
+    protected $fillable = [
+        'id',
+        'title',
+        'body',
+        'user_id',
+        'creator', 
+        'categories',
+        'comments',
+        'image'
+    ];
 
-    public function category(){
-        return $this->belongsTo(Category::class);
-    }
 
     public function user(){
         return $this->belongsTo(User::class);
