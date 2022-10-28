@@ -11,10 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CountriesSeeder::class);
-        $this->call(RolesTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(PermissionTableSeeder::class);
+//        $this->call(CountriesSeeder::class);
+//        $this->call(RolesTableSeeder::class);
+//        $this->call(UsersTableSeeder::class);
+//        $this->call(PermissionTableSeeder::class);
         $this->call(CategoriesSeeder::class);
 
         //Migration of data from legacy system

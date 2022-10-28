@@ -84,6 +84,18 @@ class HomeController extends Controller
                         'link' => 'add_posts',
                         'permission' => 'user_view',
                     ],
+                    [
+                        'label' => 'strings.category.add_category',
+                        'name' => 'add_category',
+                        'link' => 'add_category',
+                        'permission' => 'user_view',
+                    ],
+                    [
+                        'label' => 'strings.category.all_categories',
+                        'name' => 'all_categories',
+                        'link' => 'all_categories',
+                        'permission' => 'user_view',
+                    ],
                 ],
             ],
         ];

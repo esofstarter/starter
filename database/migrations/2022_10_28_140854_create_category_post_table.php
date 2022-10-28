@@ -16,7 +16,7 @@ class CreateCategoryPostTable extends Migration
         Schema::create('category_post', function (Blueprint $table) {
             $table->integer('post_id')->unsigned();
             $table->integer('category_id')->unsigned();
-            
+
             $table->foreign('post_id')->references('id')->on('posts')
                 ->onUpdate('cascade')->onDelete('cascade');;
             $table->foreign('category_id')->references('id')->on('categories')
