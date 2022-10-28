@@ -22,11 +22,13 @@
         datatable_data: UserTableRow[] = [];
         roles: Array<any>;
         statuses: Array<any>;
+        categories: Array<any>;
         tableData;
 
         constructor() {
             super();
             this.roles = [];
+            this.categories = [];
             this.statuses = [
                 {id: 3, name: 'All status'},
                 {id: 0, name: 'Enabled'},
@@ -50,6 +52,7 @@
                 this.sortOrders[column.name] = -1;
             });
             await this.fetchRoles();
+            await this.fetchCategories();
             // await this.getData();
             await this.fetchData();
             if (Number(Vue.router.currentRoute.params.success)) {
@@ -66,6 +69,14 @@
             }).catch(err => {
                 console.log(err.message);
             })
+        }
+        fetchCategories() {
+          this.axios.get('category/all')
+            .then((response) => {
+              this.categories = response.data;
+            }).catch(err => {
+              console.log(err.message);
+          });
         }
 
         fetchRoles() {

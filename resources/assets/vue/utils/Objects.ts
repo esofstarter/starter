@@ -26,9 +26,14 @@ const post: PostFormItem = {
   categories: []
   // user_id: 0
 };
-
+const category: CategoryFormItem = {
+  id: 0,
+  title: '',
+  slug: ''
+}
 export {
   user,
-  post
+  post,
+  category
   ,
 };
