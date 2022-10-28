@@ -12,13 +12,14 @@ use Illuminate\Http\Request;
 */
 
 // Non auth routes
-// Route::group([
-//     'middleware' => 'api',
-//     'prefix' => 'posts',
-// ], function () {
-    // Route::post('{id}/new', 'Controllers\SlaController@newGuest');
-    // Route::post('confirm', 'Controllers\SlaController@confirm');
-// });
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'posts',
+], function () {
+    Route::get('allPosts', 'Controllers\PostController@allPosts');
+    Route::post('{id}/new', 'Controllers\SlaController@newGuest');
+    Route::post('confirm', 'Controllers\SlaController@confirm');
+});
 
 // Authorized routes
 Route::group([
