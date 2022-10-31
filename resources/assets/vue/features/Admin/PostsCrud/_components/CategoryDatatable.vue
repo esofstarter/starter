@@ -18,7 +18,7 @@
 
   export default class CategoryDatatable extends Mixins(DatatableMixin) {
 
-    endpoint: string = 'posts';
+    endpoint: string = 'categories';
     datatable_data: UserTableRow[] = [];
     roles: Array<any>;
     statuses: Array<any>;
@@ -62,18 +62,11 @@
       }
     }
 
-    // fetchData() {
-    //   this.axios.post('posts/draw', this.tableData).then(resp => {
-    //     this.datatable_data = resp.data;
-    //     this.loading = false;
-    //   }).catch(err => {
-    //     console.log(err.message);
-    //   })
-    // }
     fetchCategories() {
       this.axios.get('category/all')
         .then((response) => {
           this.datatable_data = response.data;
+          this.loading = false;
         }).catch(err => {
         console.log(err.message);
       });

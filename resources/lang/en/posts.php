@@ -32,6 +32,13 @@ return [
         'success' => 'Successfully deleted post!',
         'confirm' => 'Are you sure you want to delete this post?',
 
+    ],
+    'categories' => [
+        'basic' => [
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'categories' => 'Category'
+        ]
     ]
 ]
 ?>

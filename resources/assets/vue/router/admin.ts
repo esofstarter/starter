@@ -188,7 +188,7 @@ export let adminPaths: RouteConfig =
       },
       {
         path: 'add_categories',
-        name: 'add.categories',
+        name: 'add_categories',
         component: CategoryForm,
         meta: {
           title: Vue.i18n.translate('category.add_category', null),
@@ -200,7 +200,7 @@ export let adminPaths: RouteConfig =
       },
       {
         path: 'all_categories',
-        name: 'all.categories',
+        name: 'all_categories',
         component: Categories,
         meta: {
           title: Vue.i18n.translate('category.all_category', null),
