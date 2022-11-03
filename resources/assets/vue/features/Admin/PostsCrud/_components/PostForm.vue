@@ -11,9 +11,9 @@ import { FormMixin } from "@/mixins/FormMixin";
 import AdminSection from "@/components/AdminSection/AdminSection";
 import UnsavedChangesModal from "@/features/Front/Users/_components/UnsavedChangesModal.vue";
 import getPhotoPath from "@/utils/imageProcessing";
-    import Multiselect from 'vue-multiselect';
+import VueSelect from 'vue-select';
 
-import { post } from "@/utils/Objects";
+import { category, post } from "@/utils/Objects";
 // import {createFile} from "@/utils/edgeFileUpload";
 
 const { State } = namespace("Root");
@@ -25,7 +25,7 @@ const { Action } = namespace("Root");
     AdminSection,
     UnsavedChangesModal,
     Textarea,
-    Multiselect
+    VueSelect
   },
 })
 export default class PostForm extends Mixins(FormMixin) {
@@ -122,47 +122,45 @@ export default class PostForm extends Mixins(FormMixin) {
     <div class="row">
       <div class="col-md-12">
         <admin-section :loading="loading">
-          <h4 slot="header">{{ $t("posts.basic.posts") }}</h4>
+<h4 slot="header">{{ $t("posts.basic.posts") }}</h4>
 
-          <template slot="content">
-            <div class="form-row">
-              <div class="col-md-12 col-sm-6">
-                <form-input
-                  :id="'title'"
-                  :label="'posts.basic.title'"
-                  v-model="form.title"
-                  :form="form"
-                ></form-input>
-              </div>
-              <div class="col-md-12 col-sm-6">
-                <form-input
-                  :id="'post_body'"
-                  :label="'posts.basic.post'"
-                  v-model="form.body"
-                  :form="form"
-                ></form-input>
-              </div>
-              <div class="col-md-12 col-sm-6">
-                <multiselect :options="categories" v-model="form.categories" :multiple="true" label="name" track-by="id">
-                  <template slot="tag" slot-scope="{ option }">
-                    <span class="custom__tag">
-                      <span>{{ option.title }}</span>
-                      <span >Ⓧ</span> <!-- class="custom__remove"-->
-                    </span>
-                  </template>
-                  <template slot="option" slot-scope="{ option }">
-                    <span class="custom__option" ><!--@click="selectedOptions(option)" -->
-                      <span>{{ option.title }}</span>
-                    </span>
-                  </template>
-                </multiselect>
-              </div>
-            </div>
-          </template>
+<template slot="content">
+  <div class="form-row">
+    <div class="col-md-12 col-sm-6">
+      <form-input
+        :id="'title'"
+        :label="'posts.basic.title'"
+        v-model="form.title"
+        :form="form"
+      ></form-input>
+    </div>
+    <div class="col-md-12 col-sm-6">
+      <form-input
+        :id="'post_body'"
+        :label="'posts.basic.post'"
+        v-model="form.body"
+        :form="form"
+      ></form-input>
+    </div>
+    <div class="col-md-12 col-sm-6 form-group">
+      <label for="categories">Categories</label>
+      <vue-select multiple v-model="form.categories" :options="categories">
+        <template v-slot:option="option">
+          <span :class="option.icon"></span>
+          {{ option.name }}
+        </template>
+        <template #selected-option="option">
+          <div style="display: flex; align-items: baseline">
+            {{ option.name }}
+          </div>
+        </template>
+      </vue-select>
+    </div>
+  </div>
+</template>
         </admin-section>
       </div>
-
-      <div class="col-md-3">
+<div class="col-md-3">
         <button
           type="submit"
           :loading="loading"
