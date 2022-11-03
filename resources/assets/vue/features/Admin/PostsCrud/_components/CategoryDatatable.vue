@@ -5,20 +5,20 @@
   import Pagination from '../../../../components/Datatables/Pagination.vue'
   import { DatatableMixin } from '@/mixins/DatatableMixin';
   import DatatableNew from "@/components/Datatables/DatatableNew.vue";
-  import PostsTableRow from './PostsTableRow.vue';
+  import CategoryTableRow from './CategoriesTableRow.vue';
 
   @Component({
                components: {
                  Datatable,
                  Pagination,
-                 PostsTableRow,
+                 CategoryTableRow,
                  DatatableNew,
                }
              })
 
-  export default class PostsDatatable extends Mixins(DatatableMixin) {
+  export default class CategoryDatatable extends Mixins(DatatableMixin) {
 
-    endpoint: string = 'posts';
+    endpoint: string = 'categories';
     datatable_data: UserTableRow[] = [];
     roles: Array<any>;
     statuses: Array<any>;
@@ -62,18 +62,11 @@
       }
     }
 
-    // fetchData() {
-    //   this.axios.post('posts/draw', this.tableData).then(resp => {
-    //     this.datatable_data = resp.data;
-    //     this.loading = false;
-    //   }).catch(err => {
-    //     console.log(err.message);
-    //   })
-    // }
     fetchCategories() {
       this.axios.get('category/all')
         .then((response) => {
           this.datatable_data = response.data;
+          this.loading = false;
         }).catch(err => {
         console.log(err.message);
       });
@@ -101,6 +94,6 @@
                  @trigger-sort="triggerSort"
                  @get-data="fetchCategories"
                  @length="changeLength">
-    <posts-table-row v-for="post in datatable_data" :key="post.id" :columns="columns" @get-data="fetchData" :post="post"></posts-table-row>
+    <category-table-row v-for="category in datatable_data" :key="category.id" :columns="columns" @get-data="fetchCategories" :category="category"></category-table-row>
   </datatable-new>
 </template>

@@ -126,6 +126,10 @@ return [
 
     'taxonomies' => [
         'handle_color' => 'Handle color',
+    ],
+    'categories' => [
+        'add' => 'Add Category',
+
     ]
 
 ];

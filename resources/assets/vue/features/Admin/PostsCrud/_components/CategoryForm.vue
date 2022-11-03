@@ -28,7 +28,7 @@
                  Multiselect
                },
              })
-  export default class PostForm extends Mixins(FormMixin) {
+  export default class CategoryForm extends Mixins(FormMixin) {
     @State("homePath") homePath;
 
     @Action("setBackUrl") setBackUrl;
@@ -54,7 +54,7 @@
 
     getRoute() {
       if (this.edit) {
-        return "/category/" + Vue.router.currentRoute.params.postId + "/edit";
+        return "/category/" + Vue.router.currentRoute.params.categoryId + "/edit";
       }
       return "/category/new";
     }
@@ -65,10 +65,10 @@
 
     fetchCategories() {
       if (this.edit) {
-        var getRoute = "/category/" + Vue.router.currentRoute.params.postId + "/get";
+        var getRoute = "/category/" + Vue.router.currentRoute.params.categoryId + "/get";
         this.axios.get(getRoute).then((response) => {
           this.form.title = response.data.title;
-          this.form.slug = response.data.body;
+          this.form.slug = response.data.slug;
           this.form.id = response.data.id;
         });
       }
@@ -114,14 +114,14 @@
     <div class="row">
       <div class="col-md-12">
         <admin-section :loading="loading">
-          <h4 slot="header">{{ $t("posts.basic.posts") }}</h4>
+          <h4 slot="header">{{ $t("posts.categories.basic.categories") }}</h4>
 
           <template slot="content">
             <div class="form-row">
               <div class="col-md-12 col-sm-6">
                 <form-input
                   :id="'title'"
-                  :label="'categories.basic.title'"
+                  :label="'posts.categories.basic.title'"
                   v-model="form.title"
                   :form="form"
                 ></form-input>
@@ -129,7 +129,7 @@
               <div class="col-md-12 col-sm-6">
                 <form-input
                   :id="'category_slug'"
-                  :label="'category.basic.post'"
+                  :label="'posts.categories.basic.slug'"
                   v-model="form.slug"
                   :form="form"
                 ></form-input>
