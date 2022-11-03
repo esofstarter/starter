@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     //    $this->call(UsersTableSeeder::class);
     //    $this->call(PermissionTableSeeder::class);
     //       $this->call(CategoriesSeeder::class);
-          $this->call(PostsSeeder::class);
+         $this->call(PostsSeeder::class);
         //Migration of data from legacy system
 //        $this->call(DataMigrationSeeder::class);
     }

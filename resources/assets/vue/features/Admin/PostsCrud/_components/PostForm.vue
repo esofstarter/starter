@@ -147,11 +147,11 @@ export default class PostForm extends Mixins(FormMixin) {
       <vue-select multiple v-model="form.categories" :options="categories">
         <template v-slot:option="option">
           <span :class="option.icon"></span>
-          {{ option.name }}
+          {{ option.title }}
         </template>
         <template #selected-option="option">
           <div style="display: flex; align-items: baseline">
-            {{ option.name }}
+            {{ option.title }}
           </div>
         </template>
       </vue-select>
