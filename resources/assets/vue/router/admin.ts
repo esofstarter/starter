@@ -119,7 +119,7 @@ export let adminPaths: RouteConfig =
       }, {
         path: 'my_posts',
         name: 'my_posts',
-        component: PostForm,
+        component: Posts,
         meta: {
           title: Vue.i18n.translate('strings.posts.main', null),
           auth: {

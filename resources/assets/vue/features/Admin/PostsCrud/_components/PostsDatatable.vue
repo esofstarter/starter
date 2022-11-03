@@ -63,7 +63,16 @@
         }
 
         fetchData() {
-            this.axios.post('posts/draw', this.tableData).then(resp => {
+
+            let pathToController;
+            
+            if(this.$route.path == '/admin/my_posts'){
+                pathToController = this.endpoint+'/drawMyPosts';
+            }else{
+                pathToController = this.endpoint+'/draw';
+            }
+
+            this.axios.post(pathToController, this.tableData).then(resp => {
                 this.datatable_data = resp.data;
                 this.loading = false;
             }).catch(err => {

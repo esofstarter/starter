@@ -21,8 +21,9 @@ class PostBLL implements PostBLLInterface {
     public function getPostById($id){
         return $this->postDAL->getPostById($id);
     }
-    public function getPostsByUser($id){
-
+    public function getPostsByUser(){
+        $userId = Auth::user()->id;
+        return $this->postDAL->getPostsByUser($userId);
     }
 
     public function savePost($data){

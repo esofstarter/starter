@@ -13,7 +13,7 @@ interface PostBLLInterface{
 
     public function getPostById($id);
 
-    public function getPostsByUser($id);
+    public function getPostsByUser();
 
     public function savePost($request);
 

@@ -33,6 +33,7 @@ Route::group([
     Route::post('{id}/edit', 'Controllers\PostController@editPost');
     Route::get('{id}/delete', 'Controllers\PostController@deletePost');
     Route::post('draw', 'Controllers\PostController@allPosts');
+    Route::post('drawMyPosts', 'Controllers\PostController@getPostsByUser');
     Route::post('new', 'Controllers\PostController@savePost');
 });
 

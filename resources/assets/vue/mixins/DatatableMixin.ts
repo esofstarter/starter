@@ -65,7 +65,7 @@ export class DatatableMixin extends Vue {
     this.loading = true;
 
     let response;
-
+    //this.$route.path = this.endpoint+''
     this.tableData.draw++;
     if (url === '') {
       url = this.endpoint+'/draw';
