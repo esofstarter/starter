@@ -27,7 +27,7 @@ class PostBLL implements PostBLLInterface {
 
     public function savePost($data){
         $post = $this->getEntryDataArray($data);
-        // dd($post);
+        //  dd($post);
         return $this->postDAL->savePost($post);
     }
 
@@ -45,6 +45,7 @@ class PostBLL implements PostBLLInterface {
         $input = [];
         $input['title'] = $request['title'];
         $input['body'] = $request['body'];
+        $input['category_id'] = $request['categories'];
         $input['user_id'] = Auth::user()->id;
         $input['creator'] =  Auth::user()->first_name;
 

@@ -5,8 +5,10 @@ namespace App\Applications\Post\Model;
 use App\Applications\User\Model\User;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Posts extends Model
 {
+
 
     protected $fillable = [
         'id',
@@ -14,8 +16,6 @@ class Posts extends Model
         'body',
         'user_id',
         'creator', 
-        'categories',
-        'comments',
         'image'
     ];
 
@@ -26,6 +26,10 @@ class Posts extends Model
 
     public function comment(){
         return $this->hasMany(Comment::class);
+    }
+
+    public function category(){
+        return $this->belongsToMany(Category::class, 'category_post');
     }
 
 }

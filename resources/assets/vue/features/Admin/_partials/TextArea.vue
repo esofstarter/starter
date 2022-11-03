@@ -72,7 +72,7 @@
                :disabled="disabled"
         />
         <div v-if="typeof form != 'undefined' && form.errors.has(id)" class="invalid-feedback">
-          <span v-for="error in form.errors.errors[id]">{{ $t(error) }}</span>
+          <span v-for="error in form.errors.errors[id]" :key=error.key>{{ $t(error) }}</span>
         </div>
       </div>
     </div>

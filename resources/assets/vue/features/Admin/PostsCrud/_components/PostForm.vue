@@ -39,6 +39,7 @@ export default class PostForm extends Mixins(FormMixin) {
   form: Form;
   item: PostFormItem;
   categories: any = [];
+  // selectedCategories: any = [];
 
   constructor() {
     super();
@@ -50,6 +51,7 @@ export default class PostForm extends Mixins(FormMixin) {
   mounted() {
     this.fetchPost();
     this.fetchCategories();
+    
   }
 
   getRoute() {
@@ -76,10 +78,9 @@ export default class PostForm extends Mixins(FormMixin) {
   }
 
   fetchCategories() {
-    // this.axios.get('/categories/get').then(resp => {
-    //   this.categories = resp.data;
-    // })
-    this.categories = [ {id:1, name:'Enrico Price'}, { id:2, name:'Libby Bosco'}, { id:3, name:'Libby Bosgrtgco'}, { id:4, name:'Libby Boscgthto'}];
+    this.axios.get('/category/all').then(resp => {
+      this.categories = resp.data;
+    })
   }
 
   getAvatar() {
@@ -96,6 +97,13 @@ export default class PostForm extends Mixins(FormMixin) {
     }
     return "";
   }
+  // selectedOptions(option){
+  //   this.selectedCategories.push(option);
+  // }
+  // removeOption(optionToBeRemoved){
+  //   console.log("remove clicked");
+  //   this.form.categories = this.form.categories.filter((tag) => tag.name !== optionToBeRemoved.name);
+  // }
 
   beforeSubmit(route, redirect_success, stop_redirect) {
     this.onSubmit(route, redirect_success, stop_redirect);
@@ -135,13 +143,17 @@ export default class PostForm extends Mixins(FormMixin) {
                 ></form-input>
               </div>
               <div class="col-md-12 col-sm-6">
-                <multiselect :options="categories" v-model="form.categories" :multiple="true">
-                  <template slot="option" slot-scope="{ option }">
-                    <span class="custom__option"><span>{{ option.name }}</span></span>
+                <multiselect :options="categories" v-model="form.categories" :multiple="true" label="name" track-by="id">
+                  <template slot="tag" slot-scope="{ option }">
+                    <span class="custom__tag">
+                      <span>{{ option.title }}</span>
+                      <span >Ⓧ</span> <!-- class="custom__remove"-->
+                    </span>
                   </template>
-                  <template slot="tag" slot-scope="{ option, remove }">
-                    <span class="custom__tag"><span>{{ option.name }}</span>
-                    <span class="custom__remove" @click="remove(option)">x</span></span>
+                  <template slot="option" slot-scope="{ option }">
+                    <span class="custom__option" ><!--@click="selectedOptions(option)" -->
+                      <span>{{ option.title }}</span>
+                    </span>
                   </template>
                 </multiselect>
               </div>

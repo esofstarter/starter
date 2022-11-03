@@ -17,16 +17,16 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title')->nullable(false);
             $table->text('body')->nullable(false);
-            // $table->string('date')->nullable(false);
+            $table->string('date')->nullable(false);
             $table->string('creator');
             $table->string('image')->nullable();
             $table->integer('user_id')->unsigned();
+           // $table->integer('category_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('posts', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
-
         });
 
     }

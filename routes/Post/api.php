@@ -17,6 +17,7 @@ Route::group([
     'prefix' => 'posts',
 ], function () {
     Route::get('allPosts', 'Controllers\PostController@allPosts');
+    Route::get('allCategories', 'Controllers\CategoryController@allCategories');
     Route::post('{id}/new', 'Controllers\SlaController@newGuest');
     Route::post('confirm', 'Controllers\SlaController@confirm');
 });

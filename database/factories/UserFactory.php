@@ -17,7 +17,7 @@ $factory->define(App\Applications\User\Model\User::class, function (Faker $faker
     static $password;
 
     return [
-        'name' => $faker->name,
+        'first_name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => bcrypt($password ?: $password = 'secret'),
         'type_id' => $faker->numberBetween($min = 1, $max = 2),

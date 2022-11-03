@@ -34,6 +34,7 @@ class User extends Authenticatable implements JWTSubject, HasMedia
     ];
 
     protected $fillable = [
+        // 'id',
         'username',
         'phone',
         'company',
@@ -93,6 +94,11 @@ class User extends Authenticatable implements JWTSubject, HasMedia
     public function country()
     {
         return $this->belongsTo(Countries::class, 'country_id');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Posts::class);
     }
 
     public function roles_array()

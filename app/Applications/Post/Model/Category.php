@@ -14,7 +14,7 @@ class Category extends Model
 
     public function article()
     {
-        return $this->hasMany(Posts::class);
+        return $this->belongsToMany(Posts::class,'category_post');
     }
 
 }

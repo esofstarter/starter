@@ -29,8 +29,21 @@ class PostDAL implements PostDALInterface {
         })->get();
     }
     public function savePost($input){
-        
-        return $this->post->create($input);
+        // $this->postCategories->create($input->);
+        // dd($input);
+        $idArray = $input['category_id'];
+        $categoriesIds = [];
+        for($i=0;$i<count($idArray);$i++){
+            foreach($idArray[$i] as $id){
+                array_push($categoriesIds,$id);
+                break;
+            }
+        };
+        // dd($categoriesIds);
+        $newPost = $this->post->create($input);
+        $newPost->category()->attach($categoriesIds);
+        // dd($newPost);
+        return $newPost;
     }
     public function editPost($post, $input){
         return $post->update($input);
