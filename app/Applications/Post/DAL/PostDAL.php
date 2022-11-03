@@ -15,22 +15,15 @@ class PostDAL implements PostDALInterface {
         $this->user = $user;
     }
     public function getAll(){
-        // $query = DB::table('users')->select('username')->join('posts', 'user_id', '=', 'users.id');
-        // $username = $query->get();
-
         return $this->post::all();
     }
     public function getPostById($id){
         return $this->post::findOrFail($id);
     }
     public function getPostsByUser($id){
-        return $this->post::whereHas('user_id', function($q){
-            $q->where('user_id');
-        })->get();
+        return $this->post->where('user_id', $id)->get();
     }
     public function savePost($input){
-        // $this->postCategories->create($input->);
-        // dd($input);
         $idArray = $input['category_id'];
         $categoriesIds = [];
         for($i=0;$i<count($idArray);$i++){
@@ -39,10 +32,8 @@ class PostDAL implements PostDALInterface {
                 break;
             }
         };
-        // dd($categoriesIds);
         $newPost = $this->post->create($input);
         $newPost->category()->attach($categoriesIds);
-        // dd($newPost);
         return $newPost;
     }
     public function editPost($post, $input){
@@ -53,6 +44,5 @@ class PostDAL implements PostDALInterface {
             ->where('id', $id)
             ->delete();
     }
-
 }
 ?>
