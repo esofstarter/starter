@@ -13,7 +13,8 @@ $kt-notification-item-padding-y: 1.1rem;
 		display: flex;
 		align-items: center;
 		padding: $kt-notification-item-padding-y $kt-notification-item-padding-x;
-		border-bottom: 1px solid kt-base-color(grey, 1);
+		border-bottom: 3px solid kt-base-color(grey, 1);
+		border-right: 2px solid rgb(79, 197, 108);
 		transition: background-color 0.3s ease;
 
 		&:last-child {
@@ -91,6 +92,7 @@ $kt-notification-item-padding-y: 1.1rem;
 		align-items: center;
 		border-top: 1px solid kt-base-color(grey, 1);
 		padding: ($kt-notification-item-padding-y + 0.5) $kt-notification-item-padding-x;
+		border-right: 2px solid rgb(79, 197, 108);
 	}
 
 	&.kt-notification--fit {

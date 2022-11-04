@@ -27,13 +27,14 @@ class CategoryBLL implements CategoryBLLInterface {
 
     public function saveCategory($data){
         $category = $this->getEntryDataArray($data);
-        // dd($Category);
-        return $this->categoryDAL->saveCategory($data);
+        // dd($category);
+        return $this->categoryDAL->saveCategory($category);
     }
 
     public function editCategory($request, $id){
         $category_data = $request->all();
         $category = $this->categoryDAL->getCategoryById($id);
+        // dd($category);
         $this->categoryDAL->editCategory($category, $category_data);
     }
 
@@ -44,7 +45,7 @@ class CategoryBLL implements CategoryBLLInterface {
     public function getEntryDataArray($request) {
         $input = [];
         $input['title'] = $request['title'];
-        $input['body'] = $request['body'];
+        $input['slug'] = $request['slug'];
         $input['user_id'] = Auth::user()->id;
         $input['creator'] =  Auth::user()->first_name;
 

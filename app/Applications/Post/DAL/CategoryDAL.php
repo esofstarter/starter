@@ -31,7 +31,7 @@ class CategoryDAL implements CategoryDALInterface {
 //        })->get();
 //    }
     public function saveCategory($input){
-
+        // dd($input);
         return $this->category->create($input);
     }
     public function editCategory($category, $input){

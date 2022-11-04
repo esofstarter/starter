@@ -12,7 +12,7 @@
     }
 </script>
 <template>
-  <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
+  <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed">
 
     <!-- begin:: Header Menu -->
     <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>

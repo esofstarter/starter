@@ -25,7 +25,6 @@ class CategoryController extends Controller
 //        return $this->categoryBLL->getCommentByUser();
 //    }
     public function saveCategory(CategoryRequest $request){
-        // dd($request);
         return $this->categoryBLL->saveCategory( $request);
     }
     public function editCategory(CategoryRequest $request, $id){
