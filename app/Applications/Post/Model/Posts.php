@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class Posts extends Model
 {
 
-
     protected $fillable = [
         'id',
         'title',
@@ -19,6 +18,9 @@ class Posts extends Model
         'image'
     ];
 
+    protected $with = [
+        'categories'
+    ];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -28,7 +30,7 @@ class Posts extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function category(){
+    public function categories(){
         return $this->belongsToMany(Category::class, 'category_post');
     }
 

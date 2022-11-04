@@ -72,6 +72,7 @@ export default class PostForm extends Mixins(FormMixin) {
         this.form.title = response.data.title;
         this.form.body = response.data.body;
         this.form.id = response.data.id;
+        this.form.categories = response.data.categories;
       });
     }
     this.loading = false;
