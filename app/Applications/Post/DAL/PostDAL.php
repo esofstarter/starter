@@ -18,7 +18,7 @@ class PostDAL implements PostDALInterface {
         return $this->post::all();
     }
     public function getPostById($id){
-        $posts = $this->post->category();
+        $posts = $this->post->categories();
         return $this->post::findOrFail($id);
     }
     public function getPostsByUser($id){

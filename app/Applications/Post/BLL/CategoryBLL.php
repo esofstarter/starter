@@ -4,6 +4,7 @@ namespace App\Applications\Post\BLL;
 use App\Applications\Post\DAL\CategoryDALInterface;
 use App\Applications\Common\DAL\MediaDALInterface;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 /**
  * @property CategoryDALInterface $categoryDAL
@@ -44,8 +45,9 @@ class CategoryBLL implements CategoryBLLInterface {
 
     public function getEntryDataArray($request) {
         $input = [];
+        // $slug = str_slug($input['title'],'-');
         $input['title'] = $request['title'];
-        $input['slug'] = $request['slug'];
+        $input['slug'] = str_slug($input['title'],'-');
         $input['user_id'] = Auth::user()->id;
         $input['creator'] =  Auth::user()->first_name;
 

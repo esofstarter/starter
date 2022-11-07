@@ -126,14 +126,6 @@
                   :form="form"
                 ></form-input>
               </div>
-              <div class="col-md-12 col-sm-6">
-                <form-input
-                  :id="'category_slug'"
-                  :label="'posts.categories.basic.slug'"
-                  v-model="form.slug"
-                  :form="form"
-                ></form-input>
-              </div>
             </div>
           </template>
         </admin-section>

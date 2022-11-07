@@ -18,13 +18,10 @@ class Posts extends Model
         'image'
     ];
 
-<<<<<<< HEAD
-=======
     protected $with = [
         'categories'
     ];
 
->>>>>>> dad9f59c2aa589aa8959f41aa87596aadba6bcc3
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -36,6 +33,7 @@ class Posts extends Model
     public function categories(){
         return $this->belongsToMany(Category::class, 'category_post');
     }
+
 
 }
 ?>
