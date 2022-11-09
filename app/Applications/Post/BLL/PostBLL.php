@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Applications\Post\BLL;
+
+use App\Applications\Common\DAL\MediaDAL;
 use App\Applications\Post\DAL\PostDALInterface;
 use App\Applications\Common\DAL\MediaDALInterface;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +12,7 @@ class PostBLL implements PostBLLInterface {
     public function __construct(
         PostDALInterface $postDAL,
         MediaDALInterface $mediaDAL
+
     ){
         $this->postDAL = $postDAL;
         $this->mediaDAL = $mediaDAL;
@@ -23,19 +26,20 @@ class PostBLL implements PostBLLInterface {
     }
     public function getPostsByUser(){
         $userId = Auth::user()->id;
-        // dd($userId);
         return $this->postDAL->getPostsByUser($userId);
     }
 
     public function savePost($data){
+        
         $post = $this->getEntryDataArray($data);
-        //  dd($post);
-        return $this->postDAL->savePost($post);
+        
+        return $this->postDAL->savePost($post,$data);
     }
 
     public function editPost($request, $id){
         $post_data = $request->all();
         $post = $this->postDAL->getPostById($id);
+        $this->mediaDAL->save($request, $post, 'post_image');
         $this->postDAL->editPost($post, $post_data);
       }
 
@@ -45,12 +49,12 @@ class PostBLL implements PostBLLInterface {
 
     public function getEntryDataArray($request) {
         $input = [];
+        $input['image'] = $request->file('image');
         $input['title'] = $request['title'];
         $input['body'] = $request['body'];
         $input['category_id'] = $request['categories'];
         $input['user_id'] = Auth::user()->id;
         $input['creator'] =  Auth::user()->first_name;
-
         return $input;
     }
 

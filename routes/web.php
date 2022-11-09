@@ -22,3 +22,5 @@ Route::group([
 Route::get('password/reset/{token}', 'HomeController@index')->name('password.reset');
 
 Route::get('/{any}', 'HomeController@index')->where('any', '.*');
+
+// Route::mediaLibrary(); 

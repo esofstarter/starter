@@ -3,7 +3,7 @@ declare interface PostFormItem {
     title?: string;
     body?: string;
     categories?: Array<number>;
-    imageId?: number;
+    uploaded_file: File | null;
     // user_id: number;
     // created_at?: Date;
     // updated_at?: Date;

@@ -31,6 +31,7 @@ class MediaDAL implements MediaDALInterface
     }
 
     public function save($request, $media, $collection, $property_name = 'uploaded_file'){
+        // dd($request);
         if ($request->hasFile($property_name)) {
             if(is_array($request->{$property_name})){
                 foreach ($request->{$property_name} as $uploaded_file) {

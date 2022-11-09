@@ -12,6 +12,7 @@ import AdminSection from "@/components/AdminSection/AdminSection";
 import UnsavedChangesModal from "@/features/Front/Users/_components/UnsavedChangesModal.vue";
 import getPhotoPath from "@/utils/imageProcessing";
 import VueSelect from 'vue-select';
+import FileUpload from "@/features/Admin/_partials/FileUpload.vue";
 
 import { category, post } from "@/utils/Objects";
 // import {createFile} from "@/utils/edgeFileUpload";
@@ -25,7 +26,8 @@ const { Action } = namespace("Root");
     AdminSection,
     UnsavedChangesModal,
     Textarea,
-    VueSelect
+    VueSelect,
+    FileUpload
   },
 })
 export default class PostForm extends Mixins(FormMixin) {
@@ -37,21 +39,26 @@ export default class PostForm extends Mixins(FormMixin) {
 
   edit: boolean;
   form: Form;
+  fetchUri: string;
+  id: number | undefined;
   item: PostFormItem;
   categories: any = [];
-  // selectedCategories: any = [];
 
   constructor() {
     super();
-    this.item = cloneDeep(post);
     this.edit = Vue.router.currentRoute.name == "edit.post";
+    this.id = Number(Vue.router.currentRoute.params.postId);
+    this.fetchUri = '/posts/' + this.id + '/get';
+    this.item = cloneDeep(post);
     this.form = new Form(this.item);
   }
 
   mounted() {
     this.fetchPost();
     this.fetchCategories();
-    
+    if (this.edit) {
+      this.initFormFromItem();
+    }
   }
 
   getRoute() {
@@ -73,6 +80,8 @@ export default class PostForm extends Mixins(FormMixin) {
         this.form.body = response.data.body;
         this.form.id = response.data.id;
         this.form.categories = response.data.categories;
+        this.form.uploaded_file = response.data.uploaded_file;
+        // this.form.uploaded_file = response.data.media;
       });
     }
     this.loading = false;
@@ -85,25 +94,21 @@ export default class PostForm extends Mixins(FormMixin) {
   }
 
   getAvatar() {
-    let avatar = "";
+    console.log("inside get avatar")
+    let avatar = '';
+    console.log(this.item.media); // returns undefined unlike this.item.media in getAvatar in UserForm
     if (this.item.media != undefined) {
-      avatar = this.item.media.find(
-        (o) => o.collection_name === "user_avatars"
-      );
+      avatar = this.item.media.find(o => o.collection_name === 'post_image');
+      console.log(avatar);
       if (avatar != undefined)
         return getPhotoPath(
-          avatar.id + "," + avatar.name + "," + avatar.mime_type,
-          400
-        );
+          avatar.id + "," + avatar.name + "," + avatar.mime_type, 400);
     }
-    return "";
+    return '';
   }
-  // selectedOptions(option){
-  //   this.selectedCategories.push(option);
-  // }
-  // removeOption(optionToBeRemoved){
-  //   console.log("remove clicked");
-  //   this.form.categories = this.form.categories.filter((tag) => tag.name !== optionToBeRemoved.name);
+
+  // saveImage(file){
+  //   this.form.image=file;
   // }
 
   beforeSubmit(route, redirect_success, stop_redirect) {
@@ -112,7 +117,7 @@ export default class PostForm extends Mixins(FormMixin) {
 }
 </script>
 
-<template>
+<!--<template>
   <form
     @submit.prevent="beforeSubmit(getRoute(), getRedirectRoute(), false)"
     @keydown="form.errors.clear($event.target.name)"
@@ -157,6 +162,14 @@ export default class PostForm extends Mixins(FormMixin) {
         </template>
       </vue-select>
     </div>
+    <file-upload 
+      v-model="form.uploaded_file" 
+      :form="form" 
+      :id="'uploaded_file'" 
+      :placeholder-image="getAvatar()"
+      > <!-- :label="'posts.basic.image'"  @input="saveImage" 
+    
+    </file-upload>
   </div>
 </template>
         </admin-section>
@@ -189,6 +202,99 @@ export default class PostForm extends Mixins(FormMixin) {
       @confirm-unsaved-changes="confirmUnsavedChanges"
       @cancel-unsaved-changes="cancelUnsavedChanges"
     >
+    </unsaved-changes-modal>
+  </form>
+</template>
+-->
+<template>
+  <form
+    @submit.prevent="beforeSubmit(getRoute(), getRedirectRoute(), false)"
+    @keydown="form.errors.clear($event.target.name)"
+    autocomplete="off"
+    enctype="multipart/form-data"
+    class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-9">
+        <admin-section :loading="loading">
+
+          <h4 slot="header">{{ $t('posts.basic.posts') }}</h4>
+
+          <template slot="content">
+
+            <div class="form-row">
+              <div class="col-md-12 col-sm-6">
+                <form-input
+                  :id="'title'"
+                  :label="'posts.basic.title'"
+                  v-model="form.title"
+                  :form="form">
+                </form-input>
+              </div>
+              <div class="col-md-12 col-sm-6">
+                <form-input
+                  :id="'post_body'"
+                  :label="'posts.basic.post'"
+                  v-model="form.body"
+                  :form="form">
+                </form-input>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-sm-6 form-group">
+              <label for="categories">Categories</label>
+                <vue-select multiple v-model="form.categories" :options="categories">
+                  <template v-slot:option="option">
+                    <span :class="option.icon"></span>
+                      {{ option.title }}
+                  </template>
+                  <template #selected-option="option">
+                    <div style="display: flex; align-items: baseline">
+                      {{ option.title }}
+                    </div>
+                  </template>
+                </vue-select>
+            </div>
+
+            <hr>
+            <file-upload 
+              v-model="form.uploaded_file" 
+              :form="form" 
+              :id="'uploaded_file'" 
+              :placeholder-image="getAvatar()"> 
+            </file-upload>
+
+
+          <button
+            type="submit"
+            :loading="loading"
+            class="btn btn-success"
+            slot="footer">
+            <i class="fa fa-save mr-1"></i>
+            {{ $t('buttons.save') }}
+          </button>
+
+          <router-link
+            :loading="loading"
+            :to="`/admin/all_posts`"
+            exact=""
+            class="btn btn-outline-secondary"
+            slot="footer">
+            {{ $t('buttons.cancel') }}
+          </router-link>
+
+          </template>
+
+        </admin-section>
+
+      </div>
+
+    </div>
+    <unsaved-changes-modal
+      v-if="confirmUnsavedChangesModal"
+      @confirm-unsaved-changes="confirmUnsavedChanges"
+      @cancel-unsaved-changes="cancelUnsavedChanges">
+
     </unsaved-changes-modal>
   </form>
 </template>

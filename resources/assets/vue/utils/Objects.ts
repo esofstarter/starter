@@ -23,7 +23,8 @@ const post: PostFormItem = {
   id: 0,
   title: '',
   body: '',
-  categories: []
+  categories: [],
+  uploaded_file: createFile('image/jpg')
   // user_id: 0
 };
 const category: CategoryFormItem = {

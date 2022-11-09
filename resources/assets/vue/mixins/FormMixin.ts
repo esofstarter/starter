@@ -55,6 +55,7 @@ export class FormMixin extends Vue {
 
   async initFormFromItem(resetOnSuccess= true) {
     this.loading = true;
+    // console.log("inside initFormFromItem")
     await this.axios.get(this.fetchUri)
       .then((response) => {
         // For this to work correctly you need to correctly define the object type and properties in the Objects file
@@ -63,6 +64,7 @@ export class FormMixin extends Vue {
         this.form.populate(this.item);
         this.form.setInitialValues(this.item, resetOnSuccess);
       });
+      this.loading=false;
   }
 
   onSubmit(route, redirect_success, stop_redirect) {

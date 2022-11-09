@@ -113,6 +113,7 @@
 
         getAvatar(){
             let avatar = '';
+            console.log(this.item.media);
             if(this.item.media != undefined){
                 avatar = this.item.media.find(o => o.collection_name === 'user_avatars');
                 if(avatar != undefined)

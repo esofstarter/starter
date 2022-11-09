@@ -4,27 +4,29 @@ namespace App\Applications\Post\DAL;
 use Illuminate\Support\Facades\DB;
 use App\Applications\Post\Model\Posts;
 use App\Applications\User\Model\User;
+use App\Applications\Common\DAL\MediaDALInterface;
 
 class PostDAL implements PostDALInterface {
    
     public function __construct(
         Posts $post,
-        User $user
+        User $user,
+        MediaDALInterface $mediaDAL
     ){
         $this->post = $post;
         $this->user = $user;
+        $this->mediaDAL = $mediaDAL;
     }
     public function getAll(){
         return $this->post::all();
     }
     public function getPostById($id){
-        $posts = $this->post->categories();
         return $this->post::findOrFail($id);
     }
     public function getPostsByUser($id){
         return $this->post->where('user_id', $id)->get();
     }
-    public function savePost($input){
+    public function savePost($input,$request){
         $idArray = $input['category_id'];
         $categoriesIds = [];
         for($i=0;$i<count($idArray);$i++){
@@ -34,7 +36,8 @@ class PostDAL implements PostDALInterface {
             }
         };
         $newPost = $this->post->create($input);
-        $newPost->category()->attach($categoriesIds);
+        $newPost->categories()->attach($categoriesIds);
+        $this->mediaDAL->save($request,$newPost,'post_image');
         return $newPost;
     }
     public function editPost($post, $input){

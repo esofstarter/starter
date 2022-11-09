@@ -13,7 +13,7 @@ interface PostDALInterface{
 
     public function getPostsByUser($id);
 
-    public function savePost($input);
+    public function savePost($input,$request);
 
     public function editPost($id, $input);
 

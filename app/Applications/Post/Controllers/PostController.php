@@ -25,7 +25,7 @@ class PostController extends Controller
     }
     public function savePost(PostRequest $request){
         // dd($request);
-        return $this->postBLL->savePost( $request);
+        return $this->postBLL->savePost( $request)->toJson();
     }
     public function editPost(PostRequest $request, $id){
         return $this->postBLL->editPost($request,$id);

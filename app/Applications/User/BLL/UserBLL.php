@@ -36,6 +36,7 @@ class UserBLL implements UserBLLInterface
     }
 
     public function saveNewUser($request){
+        // dd($request);
         $request_array = $request->all();
         if(empty($request_array['password']))
             unset($request_array['password']);

@@ -4,10 +4,14 @@ namespace App\Applications\Post\Model;
 
 use App\Applications\User\Model\User;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 
-class Posts extends Model
+
+class Posts extends Model implements HasMedia
 {
+    use HasMediaTrait;
 
     protected $fillable = [
         'id',
@@ -19,7 +23,8 @@ class Posts extends Model
     ];
 
     protected $with = [
-        'categories'
+        'categories',
+        'media'
     ];
 
     public function user(){
@@ -34,6 +39,11 @@ class Posts extends Model
         return $this->belongsToMany(Category::class, 'category_post');
     }
 
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('post_image')
+            ->singleFile();
+    }
 
 }
 ?>
