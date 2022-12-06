@@ -11,6 +11,8 @@ interface CategoryDALInterface{
 
     public function getCategoryById($id);
 
+    public function getCategoryBySlug($slug);
+
 //    public function getCategorysByUser($id);
 
     public function saveCategory($input);

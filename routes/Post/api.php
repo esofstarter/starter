@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Applications\Post\Model\Posts;
+use App\Http\Resources\PostResource;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,7 +17,12 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'posts',
 ], function () {
+    Route::get('index','Controllers\PostController@index');
+    Route::get('getScrolldownPosts', 'Controllers\PostController@getScrolldownPosts');
     Route::get('allPosts', 'Controllers\PostController@allPosts');
+    Route::get('latestPosts', 'Controllers\PostController@latestPosts'); //function(){ return PostResource::collection(Posts::all());})
+    Route::get('{id}/fetch', 'Controllers\PostController@getPostByIdNonAuth');
+
     Route::get('allCategories', 'Controllers\CategoryController@allCategories');
     Route::post('{id}/new', 'Controllers\SlaController@newGuest');
     Route::post('confirm', 'Controllers\SlaController@confirm');

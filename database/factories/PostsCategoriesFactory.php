@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(PostsCategories::class, function (Faker $faker) {
     return [
         'category_id'=> Category::all(['id'])->random(),
-        'post_id'=> Posts::all(['id'])->random(),
+        'posts_id'=> Posts::all(['id'])->random(),
     ];
 });

@@ -26,6 +26,9 @@ class CategoryBLL implements CategoryBLLInterface {
         return $this->categoryDAL->getCategoryById($id);
     }
 
+    public function getCategoryBySlug($slug){
+        return $this->categoryDAL->getCategoryBySlug($slug);
+    }
     public function saveCategory($data){
         $category = $this->getEntryDataArray($data);
         // dd($category);
@@ -53,6 +56,7 @@ class CategoryBLL implements CategoryBLLInterface {
 
         return $input;
     }
+
 
 }
 ?>

@@ -21,6 +21,9 @@ class CategoryController extends Controller
     public function getCategoryById($id){
         return $this->categoryBLL->getCategoryById($id);
     }
+    public function getCategoryBySlug($slug){
+        return $this->categoryBLL->getCategoryBySlug($slug);
+    }
 //    public function getCategoryByUser(){
 //        return $this->categoryBLL->getCommentByUser();
 //    }

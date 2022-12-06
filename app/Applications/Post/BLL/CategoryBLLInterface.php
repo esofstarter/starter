@@ -10,6 +10,7 @@ interface CategoryBLLInterface{
 
     public function getCategoryById($id);
 
+    public function getCategoryBySlug($slug);
 //    public function getCategorsByUser($id);
 
     public function saveCategory($request);

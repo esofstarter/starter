@@ -6,9 +6,13 @@ use App\Applications\Common\DAL\MediaDAL;
 use App\Applications\Post\DAL\PostDALInterface;
 use App\Applications\Common\DAL\MediaDALInterface;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\PostResource;
+use Illuminate\Http\Request;
 
 class PostBLL implements PostBLLInterface {
-   
+
+    public $postsperpage = 3;
+
     public function __construct(
         PostDALInterface $postDAL,
         MediaDALInterface $mediaDAL
@@ -17,12 +21,30 @@ class PostBLL implements PostBLLInterface {
         $this->postDAL = $postDAL;
         $this->mediaDAL = $mediaDAL;
     }
+
+    public function index(){
+        return $this->postDAL->index($this->postsperpage);
+    }
+
+    public function getScrolldownPosts(Request $request){
+        // dd($this->postDAL->getPostsPerPage($request,$this->postsperpage));
+        $data = $this->postDAL->getPostsPerPage($request,$this->postsperpage);
+        return $data;
+    }
+
     public function getAllPosts(){
-        return $this->postDAL->getAll();
+        return PostResource::collection($this->postDAL->getAll());
+    }
+
+    public function getLatestPosts(){
+        return PostResource::collection($this->postDAL->getLatestPosts());
     }
 
     public function getPostById($id){
-        return $this->postDAL->getPostById($id);
+        return new PostResource($this->postDAL->getPostById($id));
+    }
+    public function getPostByIdNonAuth($id){
+        return new PostResource($this->postDAL->getPostById($id));
     }
     public function getPostsByUser(){
         $userId = Auth::user()->id;
@@ -30,9 +52,9 @@ class PostBLL implements PostBLLInterface {
     }
 
     public function savePost($data){
-        
+
         $post = $this->getEntryDataArray($data);
-        
+
         return $this->postDAL->savePost($post,$data);
     }
 

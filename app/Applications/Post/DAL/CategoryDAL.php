@@ -25,6 +25,10 @@ class CategoryDAL implements CategoryDALInterface {
     public function getCategoryById($id){
         return $this->category::findOrFail($id);
     }
+
+    public function getCategoryBySlug($slug){
+        return $this->category->where('slug',$slug)->first();
+    }
 //    public function getCategoryByUser($id){
 //        return $this->category::whereHas('user_id', function($q){
 //            $q->where('user_id');

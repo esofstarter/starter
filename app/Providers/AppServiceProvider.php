@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Resources\PostResource;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
@@ -21,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        PostResource::withoutWrapping();
         /**
          * Paginate a standard Laravel Collection.
          *

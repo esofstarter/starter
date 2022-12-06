@@ -38,7 +38,7 @@ class PostRequest extends ApiFormRequest
             // 'user_id' => 'required',
             // 'password_confirmation' => 'required_with:password|nullable|between:6,30|same:password',
             // 'roles' => 'required|exists:roles,id',
-            // 'uploaded_file' => 'file|mimes:jpeg,jpg,png,gif|max:30000',
+            'uploaded_file' => 'file|mimes:jpeg,jpg,png,gif|max:30000',
         ];
 
         return $rules;

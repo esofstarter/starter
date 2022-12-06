@@ -48,8 +48,8 @@ class PostsSeeder extends Seeder
             // };
             // $post->comment()->saveMany($comments);
         // });
-        factory(Posts::class, 5)->create();
-       factory(PostsCategories::class,25)->create();
+      //  factory(Posts::class, 5)->create();
+      factory(PostsCategories::class,25)->create();
     
     }
 }

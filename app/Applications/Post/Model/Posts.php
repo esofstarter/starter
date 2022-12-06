@@ -45,5 +45,12 @@ class Posts extends Model implements HasMedia
             ->singleFile();
     }
 
+    public function image()
+    {
+        // return $this->getFirstMediaPath('post_image');
+
+        return $this->getFirstMediaUrl('post_image');
+    }
+
 }
 ?>

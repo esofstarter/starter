@@ -21,6 +21,7 @@ class CreateCategoryPostTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');;
             $table->foreign('category_id')->references('id')->on('categories')
                 ->onUpdate('cascade')->onDelete('cascade');;
+            $table->timestamps();
         });
 
     }
