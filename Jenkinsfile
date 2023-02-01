@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage("Cloning repository") {
             steps {
-                git 'https://github.com/esofstarter/starter.git'
+                git url: 'git@github.com:esofstarter/starter.git', branch: 'dev'
             }
         }
         stage('Composer Install') {
