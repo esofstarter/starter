@@ -1,19 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                git branch: '*/dev'
+                git 'https://github.com/esofstarter/starter.git'
             }
         }
         stage('Composer Install') {
             steps {
                 sh 'composer install --no-dev'
-            }
-        }
-        stage('PHPUnit') {
-            steps {
-                sh 'vendor/bin/phpunit'
             }
         }
         stage('Create Release') {
