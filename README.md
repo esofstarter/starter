@@ -49,5 +49,3 @@ Clear all docker cache containers networks etc ... This will remove docker conta
 ```shell
 docker system prune -a
 ```
-
-test
