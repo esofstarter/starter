@@ -31,7 +31,10 @@ class CommentBLL implements CommentBLLInterface {
     public function saveComment($data){
         $comment = $this->getEntryDataArray($data);
         // dd($post);
-        return $this->commentDAL->savePost($data);
+        // if(!$comment['user_id']){
+        //     return response()->json(['error' => 'You have to be logged in to comment!'], 401);
+        // }
+        return $this->commentDAL->saveComment($comment);
     }
 
     public function editComment($request, $id){
@@ -46,10 +49,9 @@ class CommentBLL implements CommentBLLInterface {
 
     public function getEntryDataArray($request) {
         $input = [];
-        $input['title'] = $request['title'];
-        $input['body'] = $request['body'];
+        $input['comment'] = $request['comment'];
+        $input['posts_id'] = $request['post_id'];
         $input['user_id'] = Auth::user()->id;
-        $input['creator'] =  Auth::user()->first_name;
 
         return $input;
     }

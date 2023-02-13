@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Applications\User\Model\User;
 use Illuminate\Support\Facades\Session;
+use Tymon\JWTAuth\JWT;
 
 class AuthController extends Controller
 {
@@ -29,7 +31,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
+        $test = User::find(1);
         if ($token = $this->guard()->attempt($credentials)) {
             $user = $this->guard()->getLastAttempted();
             if ($user->is_disabled) {
@@ -65,6 +67,7 @@ class AuthController extends Controller
     public function logout()
     {
         $this->guard()->logout();
+        // Session::flush();
         return response()->json(['message' => 'Successfully logged out']);
     }
 

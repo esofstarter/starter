@@ -22,10 +22,11 @@ Route::group([
     Route::get('allPosts', 'Controllers\PostController@allPosts');
     Route::get('latestPosts', 'Controllers\PostController@latestPosts'); //function(){ return PostResource::collection(Posts::all());})
     Route::get('{id}/fetch', 'Controllers\PostController@getPostByIdNonAuth');
+    Route::get('date', 'Controllers\PostController@getPostsByDate');
 
     Route::get('allCategories', 'Controllers\CategoryController@allCategories');
-    Route::post('{id}/new', 'Controllers\SlaController@newGuest');
-    Route::post('confirm', 'Controllers\SlaController@confirm');
+    // Route::post('{id}/new', 'Controllers\SlaController@newGuest');
+    // Route::post('confirm', 'Controllers\SlaController@confirm');
 });
 
 // Authorized  post routes

@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+        \App\Http\Middleware\Cors::class,
     ];
 
     /**
@@ -64,6 +65,6 @@ class Kernel extends HttpKernel
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
         'logged' => \App\Http\Middleware\LoggedUser::class,
-        'owner' => \App\Http\Middleware\CheckOwnership::class
+        'owner' => \App\Http\Middleware\CheckOwnership::class,
     ];
 }

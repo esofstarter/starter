@@ -1,0 +1,11 @@
+{
+    "baseUrl": "http://admin.starter.test",
+    "env": {
+        "db": {
+          "host": "database",
+          "user": "root",
+          "password": "password",
+          "database": "starter"
+        }
+      }
+}

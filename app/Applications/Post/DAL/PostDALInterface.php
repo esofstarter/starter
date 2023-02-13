@@ -7,13 +7,17 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 interface PostDALInterface{
 
-    public function index($postsperpage);
+    public function index();
 
     public function getPostsPerPage(Request $request,$postsperpage);
 
     public function getAll();
 
     public function getLatestPosts();
+
+    public function getPostsByDate($date);
+
+    public function getPostwithComments($id);
 
     public function getPostById($id);
 
@@ -26,6 +30,8 @@ interface PostDALInterface{
     public function editPost($id, $input);
 
     public function deletePost($id);
+
+    public function getPostsByCategories();
 
 }
 ?>

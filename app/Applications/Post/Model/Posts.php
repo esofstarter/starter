@@ -19,12 +19,13 @@ class Posts extends Model implements HasMedia
         'body',
         'user_id',
         'creator', 
-        'image'
+        'image',
     ];
 
     protected $with = [
         'categories',
-        'media'
+        'media',
+        'comment',
     ];
 
     public function user(){

@@ -9,6 +9,12 @@ class Comment extends Model
 {
     protected $table='comments';
 
+    protected $fillable=[
+        'comment',
+        'user_id',
+        'posts_id'
+    ];
+
     public function author(){
         return $this->belongsTo(User::class);
     }

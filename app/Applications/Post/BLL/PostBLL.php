@@ -7,6 +7,7 @@ use App\Applications\Post\DAL\PostDALInterface;
 use App\Applications\Common\DAL\MediaDALInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\PostResource;
+use App\Http\Resources\PostCommentsResource;
 use Illuminate\Http\Request;
 
 class PostBLL implements PostBLLInterface {
@@ -23,7 +24,7 @@ class PostBLL implements PostBLLInterface {
     }
 
     public function index(){
-        return $this->postDAL->index($this->postsperpage);
+        return $this->postDAL->index();
     }
 
     public function getScrolldownPosts(Request $request){
@@ -40,11 +41,17 @@ class PostBLL implements PostBLLInterface {
         return PostResource::collection($this->postDAL->getLatestPosts());
     }
 
+    public function getPostsByDate(Request $request){
+        $date = $request->input('date');
+
+        return /* PostResource::collection( */$this->postDAL->getPostsByDate($date)/* ) */;
+    }
+
     public function getPostById($id){
         return new PostResource($this->postDAL->getPostById($id));
     }
     public function getPostByIdNonAuth($id){
-        return new PostResource($this->postDAL->getPostById($id));
+        return $this->postDAL->getPostByIdNonAuth($id);
     }
     public function getPostsByUser(){
         $userId = Auth::user()->id;

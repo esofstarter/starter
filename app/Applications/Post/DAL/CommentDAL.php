@@ -22,6 +22,9 @@ class CommentDAL implements CommentDALInterface {
 
         return $this->comment::all();
     }
+
+    
+
     public function getCommentById($id){
         return $this->comment::findOrFail($id);
     }
@@ -31,7 +34,6 @@ class CommentDAL implements CommentDALInterface {
         })->get();
     }
     public function saveComment($input){
-
         return $this->comment->create($input);
     }
     public function editComment($comment, $input){

@@ -257,6 +257,8 @@ return [
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
         'Countries' => Webpatser\Countries\CountriesFacade::class,
         'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     ],
 
 ];

@@ -33,7 +33,7 @@ class CommentRequest extends ApiFormRequest
 
         $rules = [
             'comment' => 'required|max:255|min:2',
-            'id' => 'required',
+            // 'user_id' => 'required',
             // 'user_id' => 'required',
             // 'password_confirmation' => 'required_with:password|nullable|between:6,30|same:password',
             // 'roles' => 'required|exists:roles,id',

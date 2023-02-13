@@ -21,6 +21,8 @@ interface PostBLLInterface{
 
     public function getLatestPosts();
 
+    public function getPostsByDate(Request $request);
+    
     public function getPostsByUser();
 
     public function savePost($request);

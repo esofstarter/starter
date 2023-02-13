@@ -36,13 +36,16 @@ class PostController extends Controller
     {
        return $this->postBLL->getLatestPosts();
     }
+    public function getPostsByDate(Request $request){
+        return $this->postBLL->getPostsByDate($request);
+    }
     public function getPostById($id){
         return $this->postBLL->getPostById($id);
     }
     public function getPostByIdNonAuth($id){
         
         // dd($this->postBLL->getPostById($id));
-        return $this->postBLL->getPostById($id);
+        return $this->postBLL->getPostByIdNonAuth($id);
     }
     public function getPostsByUser(){
         return $this->postBLL->getPostsByUser();
